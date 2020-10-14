@@ -1,11 +1,8 @@
-
-
 #import "AppDelegate.h"
 //地图api
 #import <AMapFoundationKit/AMapFoundationKit.h>
 //全局方法
 #import "GlobalMethod+Version.h"
-
 //UNUserNotification
 #import <UserNotifications/UserNotifications.h>
 //微信

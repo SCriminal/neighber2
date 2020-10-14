@@ -7,6 +7,7 @@
 //
 
 #import "WhistleDetailView.h"
+#import "ImageDetailBigView.h"
 
 
 
@@ -176,6 +177,8 @@
 
 #pragma mark 刷新view
 - (void)resetViewWithModel:(ModelWhistleList *)model{
+    self.model = model;
+
     [self removeSubViewWithTag:TAG_LINE];//移除线
     [self addLineFrame:CGRectMake(W(30), 0, SCREEN_WIDTH - W(60), 1)];
     //刷新view
@@ -223,7 +226,30 @@
         }
     }
     //设置总高度
-    self.height = [self addDot:aryDatas top:self.progress.top +W(1)];
+    CGFloat top = [self addDot:aryDatas top:self.progress.top +W(1)];
+      if (model.ary9UrlImages.count) {
+          UIImageView * iv = [UIImageView new];
+          iv.backgroundColor = [UIColor clearColor];
+          iv.contentMode = UIViewContentModeScaleAspectFill;
+          iv.clipsToBounds = true;
+          iv.widthHeight = XY(W(50),W(50));
+          iv.leftTop = XY(W(144),top);
+          [iv sd_setImageWithModel:model.ary9UrlImages.firstObject placeholderImageName:IMAGE_BIG_DEFAULT];
+          [iv addTarget:self action:@selector(imageClick:)];
+          [self addSubview:iv];
+          top = iv.bottom + W(27);
+      }
+      //设置总高度
+      self.height = top;
+    
+}
+- (void)imageClick:(UITapGestureRecognizer *)tap{
+    UIImageView * iv = (UIImageView *)tap.view;
+    if ([iv isKindOfClass:[UIImageView class]]) {
+        ImageDetailBigView * detailView = [ImageDetailBigView new];
+        [detailView resetView:self.model.ary9UrlImages isEdit:false index: 0];
+        [detailView showInView:GB_Nav.lastVC.view imageViewShow:iv];
+    }
 }
 - (CGFloat)addDot:(NSArray *)aryBtns top:(CGFloat)top{
     for (int i = 0; i<aryBtns.count; i++) {

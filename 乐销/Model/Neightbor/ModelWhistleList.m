@@ -58,6 +58,8 @@ NSString *const kModelWhistleListEvaluateTime = @"evaluateTime";
         self.handleTime = [dict doubleValueForKey:kModelWhistleListHandleTime];
         self.pushTime = [dict doubleValueForKey:kModelWhistleListPushTime];
         self.evaluateTime = [dict doubleValueForKey:kModelWhistleListEvaluateTime];
+        self.photo9Urls =  [dict arrayValueForKey:@"photo9Urls"];
+
 //1已发哨 3已吹哨 6已处理 9已处理 10已评价
         switch ((int)self.status) {
             case 1:
@@ -100,6 +102,12 @@ NSString *const kModelWhistleListEvaluateTime = @"evaluateTime";
             model.url = strURL;
             [self.aryImages addObject:model];
         }
+        self.ary9UrlImages = [NSMutableArray new];
+                      for (NSString * strURL in self.photo9Urls) {
+                          ModelImage * model = [ModelImage new];
+                          model.url = strURL;
+                          [self.ary9UrlImages addObject:model];
+                      }
     }
     
     return self;
@@ -121,6 +129,7 @@ NSString *const kModelWhistleListEvaluateTime = @"evaluateTime";
     [mutableDict setValue:[NSNumber numberWithDouble:self.handleTime] forKey:kModelWhistleListHandleTime];
     [mutableDict setValue:[NSNumber numberWithDouble:self.pushTime] forKey:kModelWhistleListPushTime];
     [mutableDict setValue:[NSNumber numberWithDouble:self.evaluateTime] forKey:kModelWhistleListEvaluateTime];
+    [mutableDict setValue:[GlobalMethod exchangeAryModelToAryDic:self.photo9Urls] forKey:@"photo9Urls"];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }
