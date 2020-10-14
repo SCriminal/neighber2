@@ -209,6 +209,7 @@
 		D263602D25343C8A0061F01A /* EHomePayWeichatInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D263602B25343C8A0061F01A /* EHomePayWeichatInfo.m */; };
 		D26360302535385D0061F01A /* EHomeDownloadCertVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D263602F2535385D0061F01A /* EHomeDownloadCertVC.m */; };
 		D26360332535457B0061F01A /* ModelEHomePayHistoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D26360322535457B0061F01A /* ModelEHomePayHistoryItem.m */; };
+		D2636036253697620061F01A /* ModelEhomeHomeItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2636035253697610061F01A /* ModelEhomeHomeItem.m */; };
 		D26510651E2880FB0084C9E2 /* UIView+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = D26510641E2880FB0084C9E2 /* UIView+Size.m */; };
 		D265F8AB207C52DF00CB11DD /* BaseTableVC+Select.m in Sources */ = {isa = PBXBuildFile; fileRef = D265F8AA207C52DF00CB11DD /* BaseTableVC+Select.m */; };
 		D26A14A21E49C25700126F7A /* NSMutableDictionary+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D26A14A11E49C25600126F7A /* NSMutableDictionary+Category.m */; };
@@ -1010,6 +1011,8 @@
 		D263602F2535385D0061F01A /* EHomeDownloadCertVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EHomeDownloadCertVC.m; sourceTree = "<group>"; };
 		D26360312535457A0061F01A /* ModelEHomePayHistoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelEHomePayHistoryItem.h; sourceTree = "<group>"; };
 		D26360322535457B0061F01A /* ModelEHomePayHistoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelEHomePayHistoryItem.m; sourceTree = "<group>"; };
+		D2636034253697610061F01A /* ModelEhomeHomeItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelEhomeHomeItem.h; sourceTree = "<group>"; };
+		D2636035253697610061F01A /* ModelEhomeHomeItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelEhomeHomeItem.m; sourceTree = "<group>"; };
 		D26510631E2880FB0084C9E2 /* UIView+Size.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Size.h"; sourceTree = "<group>"; };
 		D26510641E2880FB0084C9E2 /* UIView+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Size.m"; sourceTree = "<group>"; };
 		D265F8A9207C52DF00CB11DD /* BaseTableVC+Select.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BaseTableVC+Select.h"; sourceTree = "<group>"; };
@@ -2582,6 +2585,8 @@
 		D2636018253183340061F01A /* 物业缴费 */ = {
 			isa = PBXGroup;
 			children = (
+				D2636034253697610061F01A /* ModelEhomeHomeItem.h */,
+				D2636035253697610061F01A /* ModelEhomeHomeItem.m */,
 				D26360312535457A0061F01A /* ModelEHomePayHistoryItem.h */,
 				D26360322535457B0061F01A /* ModelEHomePayHistoryItem.m */,
 				D263602C25343C8A0061F01A /* EHomePayWeichatInfo.h */,
@@ -5022,6 +5027,7 @@
 				D23327AC21854FE000495488 /* MapView.m in Sources */,
 				D216F5401E56AB9800E11ED2 /* NSMutableArray+Safe.m in Sources */,
 				D22FCB962475156900FBA237 /* CertificateDealListView.m in Sources */,
+				D2636036253697620061F01A /* ModelEhomeHomeItem.m in Sources */,
 				D29130D22417AEB900CAC2E4 /* SwitchView.m in Sources */,
 				D242503E24132E520055AC42 /* CommunityVC.m in Sources */,
 				D23D90C71F8B245A00489F95 /* UIViewController+Category.m in Sources */,

@@ -543,7 +543,7 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
                           failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{@"page":NSNumber.dou(page),
                           @"count":NSNumber.dou(count),
-                          @"estateId":NSNumber.dou(estateId),
+                          @"estateId":RequestLongKey(estateId),
                           @"scope":NSNumber.dou(4)};
     [self getUrl:@"/resident/resident/archive/list/total" delegate:delegate parameters:dic success:success failure:failure];
 }
@@ -564,11 +564,12 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
                                scope:(NSString *)scope
                             realName:(NSString *)realName
                             idNumber:(NSString *)idNumber
+                         ehomeRoomId:(double)ehomeRoomId
                             delegate:(id <RequestDelegate>)delegate
                              success:(void (^)(NSDictionary * response, id mark))success
                              failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{@"estateId":NSNumber.dou(estateId),
-                          @"cellPhone":RequestStrKey(cellPhone),
+                          @"cellphone":RequestStrKey(cellPhone),
                           @"buildingName":RequestStrKey(buildingName),
                           @"unitName":RequestStrKey(unitName),
                           @"roomName":RequestStrKey(roomName),
@@ -580,7 +581,10 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
                           @"job":RequestStrKey(job),
                           @"enterprise":RequestStrKey(enterprise),
                           @"isParty":NSNumber.dou(isPart),
-                          @"scope":NSNumber.dou(4)};
+                          @"scope":NSNumber.dou(4),
+                          @"ehomeRoomId":NSNumber.dou(ehomeRoomId)
+                          
+    };
     [self postUrl:@"/resident/resident/archive" delegate:delegate parameters:dic success:success failure:failure];
 }
 /**
@@ -601,11 +605,12 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
                                 scope:(NSString *)scope
 realName:(NSString *)realName
 idNumber:(NSString *)idNumber
+ehomeRoomId:(double)ehomeRoomId
                              delegate:(id <RequestDelegate>)delegate
                               success:(void (^)(NSDictionary * response, id mark))success
                               failure:(void (^)(NSString * errorStr, id mark))failure{
     NSDictionary *dic = @{@"estateId":NSNumber.dou(estateId),
-                          @"cellPhone":RequestStrKey(cellPhone),
+                          @"cellphone":RequestStrKey(cellPhone),
                           @"buildingName":RequestStrKey(buildingName),
                           @"unitName":RequestStrKey(unitName),
                           @"roomName":RequestStrKey(roomName),
@@ -618,7 +623,9 @@ idNumber:(NSString *)idNumber
                           @"enterprise":RequestStrKey(enterprise),
                           @"isParty":NSNumber.dou(isPart),
                           @"id":NSNumber.dou(identity),
-                          @"scope":NSNumber.dou(4)};
+                          @"scope":NSNumber.dou(4),
+                          @"ehomeRoomId":NSNumber.dou(ehomeRoomId)
+    };
     [self patchUrl:@"/resident/resident/archive/{id}" delegate:delegate parameters:dic success:success failure:failure];
 }
 
@@ -1343,7 +1350,7 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
 }
 
 /**
- 根据建档信息筛选[^/resident/resident/archive/estate/list$]
+ 根据建档信息筛选
  */
 +(void)requestCommunityListWithArchiveDelegate:(id <RequestDelegate>)delegate
                                        success:(void (^)(NSDictionary * response, id mark))success

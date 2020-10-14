@@ -17,6 +17,8 @@ NSString *const kModelHaiLuoUserId = @"userId";
 NSString *const kModelHaiLuoToken = @"token";
 NSString *const kModelHaiLuoSex = @"sex";
 NSString *const kModelHaiLuoNickName = @"nickName";
+NSString *const kModelHaiLuoAreaId = @"areaId";
+NSString *const kModelHaiLuoRoomId = @"roomId";
 
 
 @interface ModelHaiLuo ()
@@ -55,6 +57,8 @@ NSString *const kModelHaiLuoNickName = @"nickName";
             self.token = [dict stringValueForKey:kModelHaiLuoToken];
             self.sex = [dict doubleValueForKey:kModelHaiLuoSex];
             self.nickName = [dict stringValueForKey:kModelHaiLuoNickName];
+        self.areaId = [dict stringValueForKey:kModelHaiLuoAreaId];
+        self.roomId = [dict stringValueForKey:kModelHaiLuoRoomId];
 
     }
     
@@ -73,6 +77,8 @@ NSString *const kModelHaiLuoNickName = @"nickName";
     [mutableDict setValue:self.token forKey:kModelHaiLuoToken];
     [mutableDict setValue:[NSNumber numberWithDouble:self.sex] forKey:kModelHaiLuoSex];
     [mutableDict setValue:self.nickName forKey:kModelHaiLuoNickName];
+    [mutableDict setValue:self.areaId forKey:kModelHaiLuoAreaId];
+    [mutableDict setValue:self.roomId forKey:kModelHaiLuoRoomId];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }

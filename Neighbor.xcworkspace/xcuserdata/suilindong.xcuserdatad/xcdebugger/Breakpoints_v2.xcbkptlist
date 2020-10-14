@@ -610,8 +610,8 @@
             timestampString = "606363955.369869"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "261"
-            endingLineNumber = "261"
+            startingLineNumber = "262"
+            endingLineNumber = "262"
             landmarkName = "-requestCreate"
             landmarkType = "7">
          </BreakpointContent>
@@ -712,9 +712,9 @@
             timestampString = "607260356.4647371"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "607"
-            endingLineNumber = "607"
-            landmarkName = "+requestEditArchiveWithEstateid:cellPhone:buildingName:unitName:roomName:tag:lng:lat:job:enterprise:isPart:identity:scope:realName:idNumber:delegate:success:failure:"
+            startingLineNumber = "612"
+            endingLineNumber = "612"
+            landmarkName = "+requestEditArchiveWithEstateid:cellPhone:buildingName:unitName:roomName:tag:lng:lat:job:enterprise:isPart:identity:scope:realName:idNumber:ehomeRoomId:delegate:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1583,8 +1583,8 @@
             filePath = "&#x4e50;&#x9500;/General/GlobalData/GlobalData.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "-GB_Key"
             landmarkType = "7">
          </BreakpointContent>
@@ -1615,8 +1615,8 @@
             filePath = "&#x4e50;&#x9500;/Request/Api/RequestApi+Neighbor.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1104"
-            endingLineNumber = "1104"
+            startingLineNumber = "1111"
+            endingLineNumber = "1111"
             landmarkName = "RequestApi(Neighbor)"
             landmarkType = "3">
          </BreakpointContent>
@@ -1631,8 +1631,8 @@
             filePath = "&#x4e50;&#x9500;/General/GlobalData/GlobalData.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
             landmarkName = "-GB_UserModel"
             landmarkType = "7">
          </BreakpointContent>
@@ -1647,8 +1647,8 @@
             filePath = "&#x4e50;&#x9500;/General/GlobalData/GlobalData.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "-setGB_UserModel:"
             landmarkType = "7">
          </BreakpointContent>
@@ -2815,8 +2815,8 @@
             filePath = "&#x4e50;&#x9500;/Request/Api/RequestApi+Neighbor.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1518"
-            endingLineNumber = "1518"
+            startingLineNumber = "1525"
+            endingLineNumber = "1525"
             landmarkName = "+requestMsgListWithCategories:page:count:delegate:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3151,8 +3151,8 @@
             filePath = "&#x4e50;&#x9500;/Request/Api/RequestApi+Neighbor.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1094"
-            endingLineNumber = "1094"
+            startingLineNumber = "1101"
+            endingLineNumber = "1101"
             landmarkName = "+requestBindDeviceIdWithDeviceID:delegate:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3167,8 +3167,8 @@
             filePath = "&#x4e50;&#x9500;/Request/Api/RequestApi+Neighbor.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1090"
-            endingLineNumber = "1090"
+            startingLineNumber = "1097"
+            endingLineNumber = "1097"
             landmarkName = "+requestBindDeviceIdWithDeviceID:delegate:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3679,8 +3679,8 @@
             filePath = "&#x4e50;&#x9500;/Request/Api/RequestApi+Neighbor.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1766"
-            endingLineNumber = "1766"
+            startingLineNumber = "1773"
+            endingLineNumber = "1773"
             landmarkName = "+requestAreaWithDelegate:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -5135,8 +5135,8 @@
             filePath = "&#x4e50;&#x9500;/General/GlobalData/GlobalData.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "-modelFindJob"
             landmarkType = "7">
          </BreakpointContent>
@@ -5848,22 +5848,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "944A6856-52D9-4CE4-9853-B89F89092468"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "&#x4e50;&#x9500;/Scenes/Test/TestVC.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "-jump"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "6254A66F-B1D8-4E6F-BABB-1DC5590C994B"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -5871,8 +5855,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/EHomePay/EHomeMainVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "355"
-            endingLineNumber = "355"
+            startingLineNumber = "416"
+            endingLineNumber = "416"
             landmarkName = "-phoneClick"
             landmarkType = "7">
          </BreakpointContent>
@@ -6130,6 +6114,54 @@
             startingLineNumber = "180"
             endingLineNumber = "180"
             landmarkName = "-reconfigView"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5E219C40-E978-479E-9B35-63CDFCA233F6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/EHomePay/EHomeArchiveListVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "256"
+            endingLineNumber = "256"
+            landmarkName = "-resetCellWithModel:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "34487C8F-A8C6-4CE6-B631-30E4689BA3BD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/EHomePay/EHomeArchiveListVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
+            landmarkName = "-requestList"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D7C2FC3C-B7A6-4D07-8A46-F26B36A21C82"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/EHomePay/EHomeArchiveListVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "-tableView:numberOfRowsInSection:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

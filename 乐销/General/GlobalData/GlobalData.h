@@ -34,6 +34,7 @@ extern UINavigationController *GB_Nav;//全局导航条
 @property (nonatomic, strong) ModelHaiLuo * modelHaiLuo;
 @property (nonatomic, strong) ModelHaiLuo * modelFindJob;
 @property (nonatomic, strong) ModelHaiLuo * modelEHome;
+@property (nonatomic, strong) ModelArchiveList * modelEHomeArchive;
 
 @property (nonatomic, strong) ModelCommunity * community;//
 @property (nonatomic, strong) NoticeView * GB_NoticeView;//global notice view

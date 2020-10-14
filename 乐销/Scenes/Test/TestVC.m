@@ -25,7 +25,7 @@
 #pragma mark nav right click
 - (void)jump{
 //    [ISSPaySDK payBankID:@"802" environmentMode:ISSBankSDKEnvironmentMode_UAT scene:ISSBankSDKUseScenePay];
-    [GB_Nav pushVCName:@"EHomePayHistoryListVC" animated:true];
+    [GB_Nav pushVCName:@"EHomeMainVC" animated:true];
 //    [self payWithModel:^(){
 //        EHomePayWeichatInfo * model = [EHomePayWeichatInfo new];
 //        model.payOrderNo = @"1315553287637958656";
@@ -34,17 +34,34 @@
 //    }()];
  
 }
-
+//app机构级的签约用机构号机构密钥计算签名    商户号：802201058120000       机构号：802202007210001   机构密钥：EB70B2F420266A3CA6426D82E8A7D2
 - (void)payWithModel:(EHomePayWeichatInfo *)model{
     NSDictionary * requestHeader = @{
         @"opId": @"ebus_PYOrderDealApp",
         @"rqId": @"Z6",
     };
     NSDictionary * requestData = @{
-        @"orderNo": @"1315553287637958656",
-        @"orderAmt": NSNumber.dou(123.16).stringValue
-    };
-    ISSPaySDK *paySDK = [ISSPaySDK payBankID:@"866" environmentMode:ISSBankSDKEnvironmentMode_UAT scene:ISSBankSDKUseScenePay];
+        @"bkId" : @"802",
+        @"orderIP" : @"60.208.131.66",
+        @"orderDesc" : @"海之宝鲜海带",
+        @"branchId" : @"802202007210001",
+        @"returnURL" : @"",
+        @"notifyURL" : @"",
+        @"currency" : @"CNY",
+        @"signFlag" : @"01",
+        @"oneMerchNo" : @"802201058120000",
+        @"secMerchNo" : @"",
+        @"certNo" : @"",
+        @"orderNo" : @"893105067997195735674",
+        @"mobileNo" : @"13300110022",
+        @"platlvevl" : @"null",
+        @"orderAmt" : @"0.01",
+        @"mac" : @"5633F7FA3154E31BB54910C067B9D6CB3603879D",
+        @"transType" : @"JNLIFE",
+        @"userName" : @"",
+        @"orderTime" : @"20201013164816",
+        @"orderTitle" : @"海之宝鲜海带"    };
+    ISSPaySDK *paySDK = [ISSPaySDK payBankID:@"802" environmentMode:ISSBankSDKEnvironmentMode_ST scene:ISSBankSDKUseScenePay];
     [paySDK showPayAddedTo:self url:@"PYOrderDeal.do" channelID:@"B2" requestHeader:requestHeader requestData:requestData success:^{
         NSLog(@"%s", __func__);
     } failure:^(NSString *message) {

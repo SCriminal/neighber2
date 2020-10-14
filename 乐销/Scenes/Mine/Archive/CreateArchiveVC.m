@@ -249,6 +249,7 @@
     if (self.model.iDProperty) {
         [RequestApi requestEditArchiveWithEstateid:[GlobalData sharedInstance].community.iDProperty  cellPhone:self.modelPhone.subString buildingName:self.modelBuilding.subString unitName:self.modelUnit.subString roomName:self.modelHouse.subString tag:self.footer.selectIdentityView.index+1  lng:[NSString stringWithFormat:@"%lf",modelAddress.lng] lat:[NSString stringWithFormat:@"%lf",modelAddress.lat] job:self.modelProfession.subString enterprise:self.modelCompany.subString isPart:self.footer.selectRepublicView.index identity:self.model.iDProperty scope:nil                                      realName:self.modelName.subString
                                           idNumber:self.modelIdentity.subString
+                                       ehomeRoomId:self.model.ehomeRoomId
                                           delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
             [GlobalMethod showAlert:@"编辑成功"];
             [GB_Nav popViewControllerAnimated:true];
@@ -261,7 +262,7 @@
     [RequestApi requestAddArchiveWithEstateid:[GlobalData sharedInstance].community.iDProperty  cellPhone:self.modelPhone.subString buildingName:self.modelBuilding.subString unitName:self.modelUnit.subString roomName:self.modelHouse.subString tag:self.footer.selectIdentityView.index+1  lng:[NSString stringWithFormat:@"%lf",modelAddress.lng] lat:[NSString stringWithFormat:@"%lf",modelAddress.lat] job:self.modelProfession.subString enterprise:self.modelCompany.subString isPart:self.footer.selectRepublicView.index scope:nil
                                      realName:self.modelName.subString
                                      idNumber:self.modelIdentity.subString
-     
+                                  ehomeRoomId:0
                                      delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         [GlobalMethod showAlert:@"添加成功"];
         [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_ARCHIVE_CREATE object:nil];

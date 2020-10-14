@@ -89,5 +89,6 @@
 #import "ModelEHomeWaitPayList.h"
 #import "EHomePayWeichatInfo.h"
 #import "ModelEHomePayHistoryItem.h"
+#import "ModelEhomeHomeItem.h"
 
 

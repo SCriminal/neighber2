@@ -318,6 +318,7 @@ failure:(void (^)(NSString * errorStr, id mark))failure;
                                scope:(NSString *)scope
                             realName:(NSString *)realName
                             idNumber:(NSString *)idNumber
+ehomeRoomId:(double)ehomeRoomId
                             delegate:(id <RequestDelegate>)delegate
                              success:(void (^)(NSDictionary * response, id mark))success
                              failure:(void (^)(NSString * errorStr, id mark))failure;
@@ -339,6 +340,7 @@ failure:(void (^)(NSString * errorStr, id mark))failure;
                                 scope:(NSString *)scope
 realName:(NSString *)realName
 idNumber:(NSString *)idNumber
+ehomeRoomId:(double)ehomeRoomId
                              delegate:(id <RequestDelegate>)delegate
                               success:(void (^)(NSDictionary * response, id mark))success
                               failure:(void (^)(NSString * errorStr, id mark))failure;

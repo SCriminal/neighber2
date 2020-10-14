@@ -20,6 +20,8 @@
 @property (nonatomic, strong) NSString *token;
 @property (nonatomic, assign) double sex;
 @property (nonatomic, strong) NSString *nickName;
+@property (nonatomic, strong) NSString *areaId;
+@property (nonatomic, strong) NSString *roomId;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

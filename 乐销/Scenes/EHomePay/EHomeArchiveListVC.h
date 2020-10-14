@@ -23,3 +23,17 @@
 - (void)resetCellWithModel:(id)model;
 
 @end
+
+@interface EHomeArchiveItemCell : UITableViewCell
+
+@property (strong, nonatomic) UIImageView *iconLogo;
+@property (strong, nonatomic) UIButton *btnSelected;
+@property (strong, nonatomic) UILabel *name;
+@property (strong, nonatomic) UILabel *address;
+@property (nonatomic, strong) void (^blockBindClick)(ModelEhomeHomeItem *);
+@property (nonatomic, strong) ModelEhomeHomeItem *model;
+
+#pragma mark 刷新cell
+- (void)resetCellWithModel:(ModelEhomeHomeItem *)model;
+
+@end

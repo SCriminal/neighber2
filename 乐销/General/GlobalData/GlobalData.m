@@ -17,6 +17,8 @@ UINavigationController *GB_Nav = nil;
 @synthesize modelHaiLuo = _modelHaiLuo;
 @synthesize modelFindJob = _modelFindJob;
 @synthesize modelEHome = _modelEHome;
+@synthesize modelEHomeArchive = _modelEHomeArchive;
+
 
 #pragma mark 实现单例
 SYNTHESIZE_SINGLETONE_FOR_CLASS(GlobalData);
@@ -67,6 +69,18 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(GlobalData);
 - (void)setModelFindJob:(ModelHaiLuo *)modelFindJob{
     [GlobalMethod writeModel:modelFindJob key:LOCAL_FINDJOBMODEL];
     _modelFindJob = modelFindJob;
+}
+
+- (ModelArchiveList *)modelEHomeArchive{
+    if (!_modelEHomeArchive ) {
+           NSDictionary * dicItem = [GlobalMethod exchangeStringToDic:[GlobalMethod readStrFromUser:LOCAL_EHOMEARCHIVE]];
+           _modelEHomeArchive = [ModelArchiveList modelObjectWithDictionary:dicItem];
+       }
+       return _modelEHomeArchive;
+}
+- (void)setModelEHomeArchive:(ModelArchiveList *)modelEHomeArchive{
+    [GlobalMethod writeModel:modelEHomeArchive key:LOCAL_EHOMEARCHIVE];
+    _modelEHomeArchive = modelEHomeArchive;
 }
 
 - (ModelHaiLuo *)modelEHome{

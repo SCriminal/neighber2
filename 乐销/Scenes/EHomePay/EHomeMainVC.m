@@ -39,8 +39,8 @@
         _autoNewsView = [FindJobNewsView new];
         [_autoNewsView timerStart];
         _autoNewsView.blockClick = ^(int index) {
-//            FindJobNoticeListVC * vc = [FindJobNoticeListVC new];
-//            [GB_Nav pushViewController:vc animated:true];
+            //            FindJobNoticeListVC * vc = [FindJobNoticeListVC new];
+            //            [GB_Nav pushViewController:vc animated:true];
         };
     }
     return _autoNewsView;
@@ -88,7 +88,7 @@
     self.tableView.top = 0;
     self.tableView.height = SCREEN_HEIGHT;
     //table
-//    [self.tableView registerClass:[<#CellName#> class] forCellReuseIdentifier:@"<#CellName#>"];
+    //    [self.tableView registerClass:[<#CellName#> class] forCellReuseIdentifier:@"<#CellName#>"];
     //request
     [self requestList];
     [self reconfigView];
@@ -99,10 +99,10 @@
     //auto sc
     
     CGFloat top = 0;
-        
+    
     self.topView.top = top;
-       [self.tableHeaderView addSubview:self.topView];
-       top = self.topView.bottom+W(15);
+    [self.tableHeaderView addSubview:self.topView];
+    top = self.topView.bottom+W(15);
     
     if (self.collection.aryModel.count) {
         self.collection.top = top ;
@@ -118,15 +118,18 @@
     
     
     if (isStr(self.companyView.model.orgName)) {
-           self.companyView.top = top;
-           [self.tableHeaderView addSubview:self.companyView];
-           top = self.companyView.bottom+W(15);
-       }
+        self.companyView.top = top;
+        [self.tableHeaderView addSubview:self.companyView];
+        top = self.companyView.bottom+W(15);
+    }
     
-    self.orderView.top = top;
-       [self.tableHeaderView addSubview:self.orderView];
-       top = self.orderView.bottom+W(15);
-       
+    if ([GlobalData sharedInstance].modelEHomeArchive.iDProperty) {
+        self.orderView.top = top;
+        [self.tableHeaderView addSubview:self.orderView];
+        top = self.orderView.bottom+W(15);
+    }
+    
+    
     self.tableHeaderView.height = top ;
     self.tableView.tableHeaderView = self.tableHeaderView;
 }
@@ -135,11 +138,26 @@
 #pragma mark request
 - (void)requestList{
     [self requestModule];
-    [self requestNewsList];
-    [self requestWuyeInfo];
-    [self requestWaitPayInfo];
+    [self requestArchive];
+    
 }
 
+- (void)requestArchive{
+    if ([GlobalData sharedInstance].modelEHomeArchive.iDProperty) {
+        [self.topView resetViewWithModel:[GlobalData sharedInstance].modelEHomeArchive];
+        [self reconfigView];
+        [self requestNewsList];
+        [self requestWuyeInfo];
+        [self requestWaitPayInfo];
+    }else{
+        [RequestApi requestArchiveListWithPage:1 count:2000 estateId:0 delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+            [self.topView resetViewWithModel:[GlobalData sharedInstance].modelEHomeArchive];
+            [self reconfigView];
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+    }
+}
 - (void)requestModule{
     [RequestApi requestModuleWithLocationaliases:@"resident_wfrcsc" areaId:[GlobalData sharedInstance].community.iDProperty delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         NSMutableArray * aryResponse = [GlobalMethod exchangeDic:[response arrayValueForKey:@"resident_wfrcsc"] toAryWithModelName:@"ModelModule"];
@@ -159,11 +177,11 @@
         [self.autoNewsView resetWithAry:[ary fetchValues:@"title"]];
         
         [self reconfigView];
-
+        
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
     }];
-   
+    
 }
 
 - (void)requestWuyeInfo{
@@ -185,8 +203,8 @@
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
     }];
-
-   
+    
+    
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle{
@@ -202,14 +220,14 @@
 - (BaseNavView *)nav{
     if (!_nav) {
         _nav = [BaseNavView initNavBackTitle:@"" rightTitle:@"切换房屋" rightBlock:^{
-            
+            [GB_Nav pushVCName:@"EHomeArchiveListVC" animated:true];
         }];
         WEAKSELF
         _nav.blockBack = ^{
             [GB_Nav popViewControllerAnimated:true];
         };
         [_nav configBlueStyle];
-
+        
     }
     return _nav;
 }
@@ -219,7 +237,7 @@
         _BG.image = [UIImage imageNamed:@"EHome_Top_bg"];
         _BG.contentMode = UIViewContentModeScaleAspectFill;
         _BG.clipsToBounds = true;
-        _BG.widthHeight = XY(SCREEN_WIDTH, W(135)+iphoneXTopInterval);
+        _BG.widthHeight = XY(SCREEN_WIDTH, W(174)+iphoneXTopInterval);
     }
     return _BG;
 }
@@ -239,6 +257,32 @@
     }
     return _whiteBG;
 }
+- (UIImageView *)head{
+    if (_head == nil) {
+        _head = [UIImageView new];
+        _head.widthHeight = XY(W(50),W(50));
+        [GlobalMethod setRoundView:_head color:[UIColor clearColor] numRound:_head.height/2.0 width:0];
+    }
+    return _head;
+}
+- (UILabel *)title{
+    if (_title == nil) {
+        _title = [UILabel new];
+        _title.textColor = [UIColor whiteColor];
+        _title.font =  [UIFont systemFontOfSize:F(17) weight:UIFontWeightMedium];
+    }
+    return _title;
+}
+- (UILabel *)subtitle{
+    if (_subtitle == nil) {
+        _subtitle = [UILabel new];
+        _subtitle.textColor = [UIColor whiteColor];
+        _subtitle.font =  [UIFont systemFontOfSize:F(12) weight:UIFontWeightRegular];
+    }
+    return _subtitle;
+}
+
+
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
@@ -254,17 +298,34 @@
     [self addSubview:self.BG];
     [self addSubview:self.nav];
     [self addSubview:self.whiteBG];
+    [self addSubview:self.head];
+    [self addSubview:self.title];
+    [self addSubview:self.subtitle];
+    
     //初始化页面
     [self resetViewWithModel:nil];
 }
 
 #pragma mark 刷新view
-- (void)resetViewWithModel:(id)model{
+- (void)resetViewWithModel:(ModelArchiveList *)modelArchive{
     [self removeSubViewWithTag:TAG_LINE];//移除线
     //刷新view
     self.whiteBG.bottom = self.BG.bottom;
     self.height = self.BG.bottom;
-
+    
+    self.head.leftBottom = XY(W(22), self.height - W(49));
+    if (modelArchive.tag == 3) {
+        self.head.image = [UIImage imageNamed:@"EHome_租户"];
+    }else {
+        self.head.image = [UIImage imageNamed:@"EHome_业主"];
+        
+    }
+    [self.title fitTitle:modelArchive.iDProperty?modelArchive.typeShow:@"暂无业主" variable:0];
+    self.title.leftTop = XY(self.head.right + W(15), self.head.top + W(3));
+    
+    [self.subtitle fitTitle:modelArchive.iDProperty?[NSString stringWithFormat:@"%@%@号楼%@单元%@",UnPackStr(modelArchive.estateName),UnPackStr(modelArchive.buildingName),UnPackStr(modelArchive.unitName),UnPackStr(modelArchive.roomName)]:@"暂无房屋信息" variable:W(250)];
+    self.subtitle.leftBottom = XY(self.head.right + W(15), self.head.bottom - W(2));
+    
 }
 
 
@@ -306,7 +367,7 @@
     [l fitTitle:@"服务物业：" variable:SCREEN_WIDTH - W(30)];
     l.leftTop = XY(W(30), W(15));
     [self addSubview:l];
-
+    
     UIView * view = [UIView new];
     view.backgroundColor = [UIColor colorWithHexString:@"#FDF9F0"];
     view.widthHeight = XY(W(99.5), W(30));
@@ -323,18 +384,18 @@
     iv.widthHeight = XY(W(20),W(20));
     iv.leftCenterY = XY(view.left + W(12),view.centerY);
     [self addSubview:iv];
-
+    
     l = [UILabel new];
     l.font = [UIFont systemFontOfSize:F(12) weight:UIFontWeightRegular];
     l.textColor = [UIColor colorWithHexString:@"#FFA900"];
     [l fitTitle:@"联系物业" variable:SCREEN_WIDTH - W(30)];
     l.leftCenterY = XY(iv.right + W(6), iv.centerY);
     [self addSubview:l];
-
+    
     [self addSubview:self.companyName];
     
     [shadowView resetViewWith:CGRectMake(W(15), 0, SCREEN_WIDTH - W(30), W(75))];
-
+    
     //初始化页面
     [self resetViewWithModel:nil];
 }
@@ -346,7 +407,7 @@
     //刷新view
     [self.companyName fitTitle:UnPackStr(model.orgName) variable:W(200)];
     self.companyName.leftTop = XY(W(30),W(41));
-
+    
     //设置总高度
     self.height = W(75);
 }
@@ -358,7 +419,7 @@
     }else{
         [GlobalMethod showAlert:@"暂无联系电话"];
     }
-
+    
 }
 @end
 
@@ -391,13 +452,13 @@
     [self addSubview:shadowView];
     
     UIImageView * iv = [UIImageView new];
-      iv.backgroundColor = [UIColor clearColor];
-      iv.contentMode = UIViewContentModeScaleAspectFill;
-      iv.clipsToBounds = true;
-      iv.image = [UIImage imageNamed:@"EHome_Main_Money"];
-      iv.widthHeight = XY(W(40),W(40));
-      iv.leftTop = XY(W(40),W(7));
-      [self addSubview:iv];
+    iv.backgroundColor = [UIColor clearColor];
+    iv.contentMode = UIViewContentModeScaleAspectFill;
+    iv.clipsToBounds = true;
+    iv.image = [UIImage imageNamed:@"EHome_Main_Money"];
+    iv.widthHeight = XY(W(40),W(40));
+    iv.leftTop = XY(W(40),W(7));
+    [self addSubview:iv];
     
     UILabel * l = [UILabel new];
     l.font = [UIFont systemFontOfSize:F(11) weight:UIFontWeightRegular];
@@ -415,7 +476,7 @@
     iv.widthHeight = XY(W(10),W(61));
     iv.leftTop = XY(W(105),W(7));
     [self addSubview:iv];
-
+    
     l = [UILabel new];
     l.font = [UIFont systemFontOfSize:F(20) weight:UIFontWeightMedium];
     l.textColor = COLOR_333;
@@ -431,12 +492,12 @@
     [self addSubview:l1];
     
     l = [UILabel new];
-       l.font = [UIFont systemFontOfSize:F(11) weight:UIFontWeightRegular];
-       l.textColor = [UIColor colorWithHexString:@"#717273"];
-       l.backgroundColor = [UIColor clearColor];
-       [l fitTitle:@"待付账单" variable:SCREEN_WIDTH - W(30)];
-       l.centerXTop = XY(W(174), W(52));
-       [self addSubview:l];
+    l.font = [UIFont systemFontOfSize:F(11) weight:UIFontWeightRegular];
+    l.textColor = [UIColor colorWithHexString:@"#717273"];
+    l.backgroundColor = [UIColor clearColor];
+    [l fitTitle:@"待付账单" variable:SCREEN_WIDTH - W(30)];
+    l.centerXTop = XY(W(174), W(52));
+    [self addSubview:l];
     
     l = [UILabel new];
     l.font = [UIFont systemFontOfSize:F(20) weight:UIFontWeightMedium];
@@ -453,17 +514,17 @@
     [self addSubview:l1];
     
     l = [UILabel new];
-       l.font = [UIFont systemFontOfSize:F(11) weight:UIFontWeightRegular];
-       l.textColor = [UIColor colorWithHexString:@"#717273"];
-       l.backgroundColor = [UIColor clearColor];
-       [l fitTitle:@"待付金额" variable:SCREEN_WIDTH - W(30)];
-       l.centerXTop = XY(SCREEN_WIDTH - W(76), W(52));
-       [self addSubview:l];
+    l.font = [UIFont systemFontOfSize:F(11) weight:UIFontWeightRegular];
+    l.textColor = [UIColor colorWithHexString:@"#717273"];
+    l.backgroundColor = [UIColor clearColor];
+    [l fitTitle:@"待付金额" variable:SCREEN_WIDTH - W(30)];
+    l.centerXTop = XY(SCREEN_WIDTH - W(76), W(52));
+    [self addSubview:l];
     
     [self addLineFrame:CGRectMake(SCREEN_WIDTH - W(137), W(17.5), 1, W(40))];
     
     [shadowView resetViewWith:CGRectMake(W(15), 0, SCREEN_WIDTH - W(30), W(75))];
-
+    
     self.height = W(75);
 }
 - (void)click{

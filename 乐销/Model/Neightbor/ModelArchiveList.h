@@ -42,6 +42,8 @@
 @property (nonatomic, strong) NSString *estateName;
 @property (nonatomic, assign) double isParty;
 @property (nonatomic, strong) NSString *typeShow;
+@property (nonatomic, assign) double ehomeRoomId;
+
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

@@ -48,6 +48,7 @@
     gbData.modelHaiLuo = nil;
     gbData.modelFindJob = nil;
     gbData.modelEHome = nil;
+    gbData.modelEHomeArchive = nil;
 
 }
 

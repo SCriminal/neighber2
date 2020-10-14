@@ -160,4 +160,14 @@
     };
     [self requestEHomeSwitchWithDic:dic trxCde:@"EM0014" apiUrl:@"/ehome/mobile/getHistoryBillInfo.do" delegate:delegate success:success failure:failure];
 }
+
++(void)requestEHomeBindHomeList:(NSString *)telephone
+ delegate:(id <RequestDelegate>)delegate
+  success:(void (^)(NSDictionary * response, id mark))success
+                        failure:(void (^)(NSString * errorStr, id mark))failure{
+    NSDictionary *dic = @{
+          @"telephone":RequestStrKey(telephone),
+      };
+      [self requestEHomeSwitchWithDic:dic trxCde:@"EM0007" apiUrl:@"/ehome/mobile/getRoomBind.do" delegate:delegate success:success failure:failure];
+}
 @end

@@ -81,6 +81,7 @@ return [UIColor colorWithRed:((float)((hexNumber & 0xFF0000) >> 16))/255.0 green
 #define LOCAL_HAILUOMODEL @"LOCAL_HAILUOMODEL"//本地存储用户信息
 #define LOCAL_FINDJOBMODEL @"LOCAL_FINDJOBMODEL"//本地存储用户信息
 #define LOCAL_EHOMEMODEL @"LOCAL_EHOMEMODEL"//本地存储用户信息
+#define LOCAL_EHOMEARCHIVE @"LOCAL_EHOMEARCHIVE"//本地存储用户信息
 
 #define LOCAL_COMPANYMODEL @"LOCAL_COMPANYMODEL"//本地存储公司信息
 #define LOCAL_ENTER_BACK_GROUND @"LOCAL_ENTER_BACK_GROUND"//进入后台时间
