@@ -26,6 +26,10 @@
 @property (nonatomic, assign) double handleTime;
 @property (nonatomic, assign) double pushTime;
 @property (nonatomic, assign) double evaluateTime;
+@property (nonatomic, assign) double isAutoPush;
+@property (nonatomic, assign) double isPlatform;
+
+
 //logical
 @property (nonatomic, strong) NSString *statusShow;
 @property (nonatomic, strong) UIColor *statusColorShow;

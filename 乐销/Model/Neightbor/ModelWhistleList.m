@@ -21,6 +21,7 @@ NSString *const kModelWhistleListResults = @"results";
 NSString *const kModelWhistleListHandleTime = @"handleTime";
 NSString *const kModelWhistleListPushTime = @"pushTime";
 NSString *const kModelWhistleListEvaluateTime = @"evaluateTime";
+NSString *const kModelWhistleListIsPlatform = @"isPlatform";
 
 @interface ModelWhistleList ()
 @end
@@ -59,6 +60,8 @@ NSString *const kModelWhistleListEvaluateTime = @"evaluateTime";
         self.pushTime = [dict doubleValueForKey:kModelWhistleListPushTime];
         self.evaluateTime = [dict doubleValueForKey:kModelWhistleListEvaluateTime];
         self.photo9Urls =  [dict arrayValueForKey:@"photo9Urls"];
+        self.isAutoPush = [dict doubleValueForKey:@"isAutoPush"];
+        self.isPlatform = [dict doubleValueForKey:kModelWhistleListIsPlatform];
 
 //1已发哨 3已吹哨 6已处理 9已处理 10已评价
         switch ((int)self.status) {
@@ -130,6 +133,8 @@ NSString *const kModelWhistleListEvaluateTime = @"evaluateTime";
     [mutableDict setValue:[NSNumber numberWithDouble:self.pushTime] forKey:kModelWhistleListPushTime];
     [mutableDict setValue:[NSNumber numberWithDouble:self.evaluateTime] forKey:kModelWhistleListEvaluateTime];
     [mutableDict setValue:[GlobalMethod exchangeAryModelToAryDic:self.photo9Urls] forKey:@"photo9Urls"];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.isAutoPush] forKey:@"isAutoPush"];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.isPlatform] forKey:kModelWhistleListIsPlatform];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }

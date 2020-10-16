@@ -210,6 +210,7 @@
 		D26360302535385D0061F01A /* EHomeDownloadCertVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D263602F2535385D0061F01A /* EHomeDownloadCertVC.m */; };
 		D26360332535457B0061F01A /* ModelEHomePayHistoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D26360322535457B0061F01A /* ModelEHomePayHistoryItem.m */; };
 		D2636036253697620061F01A /* ModelEhomeHomeItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D2636035253697610061F01A /* ModelEhomeHomeItem.m */; };
+		D263603A253705950061F01A /* NoticeAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2636039253705950061F01A /* NoticeAlertView.m */; };
 		D26510651E2880FB0084C9E2 /* UIView+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = D26510641E2880FB0084C9E2 /* UIView+Size.m */; };
 		D265F8AB207C52DF00CB11DD /* BaseTableVC+Select.m in Sources */ = {isa = PBXBuildFile; fileRef = D265F8AA207C52DF00CB11DD /* BaseTableVC+Select.m */; };
 		D26A14A21E49C25700126F7A /* NSMutableDictionary+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D26A14A11E49C25600126F7A /* NSMutableDictionary+Category.m */; };
@@ -1013,6 +1014,8 @@
 		D26360322535457B0061F01A /* ModelEHomePayHistoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelEHomePayHistoryItem.m; sourceTree = "<group>"; };
 		D2636034253697610061F01A /* ModelEhomeHomeItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelEhomeHomeItem.h; sourceTree = "<group>"; };
 		D2636035253697610061F01A /* ModelEhomeHomeItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelEhomeHomeItem.m; sourceTree = "<group>"; };
+		D2636038253705950061F01A /* NoticeAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeAlertView.h; sourceTree = "<group>"; };
+		D2636039253705950061F01A /* NoticeAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticeAlertView.m; sourceTree = "<group>"; };
 		D26510631E2880FB0084C9E2 /* UIView+Size.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Size.h"; sourceTree = "<group>"; };
 		D26510641E2880FB0084C9E2 /* UIView+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Size.m"; sourceTree = "<group>"; };
 		D265F8A9207C52DF00CB11DD /* BaseTableVC+Select.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BaseTableVC+Select.h"; sourceTree = "<group>"; };
@@ -2603,6 +2606,16 @@
 			path = "物业缴费";
 			sourceTree = "<group>";
 		};
+		D2636037253705950061F01A /* NoticeAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				D2636038253705950061F01A /* NoticeAlertView.h */,
+				D2636039253705950061F01A /* NoticeAlertView.m */,
+			);
+			name = NoticeAlertView;
+			path = "乐销/Scenes/NoticeAlertView";
+			sourceTree = SOURCE_ROOT;
+		};
 		D26AE0612425A7720044E1DA /* Medical */ = {
 			isa = PBXGroup;
 			children = (
@@ -2849,6 +2862,7 @@
 		D28466922160A81B002A8650 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				D2636037253705950061F01A /* NoticeAlertView */,
 				D237078324504EE200D42B59 /* Authentication */,
 				D2913092241723E100CAC2E4 /* MerchantSingin */,
 				D29130862417227900CAC2E4 /* MemeberManage */,
@@ -4980,6 +4994,7 @@
 				D2BF1DA41EB0719300957348 /* BaseTableVC+KeyboardObserve.m in Sources */,
 				D2BE30DD2107141D0059929D /* ImageControl.m in Sources */,
 				D2C9EC082520866F000D3E00 /* EHomeHomeListVC.m in Sources */,
+				D263603A253705950061F01A /* NoticeAlertView.m in Sources */,
 				D299762B24A9BC320048CD2E /* SafetyIndexDetailVC.m in Sources */,
 				D2424FA624132DC10055AC42 /* PersonalCenterView.m in Sources */,
 				D2D2701A2511A66A006C3008 /* FJResumeDetailView.m in Sources */,
@@ -5341,7 +5356,7 @@
 					"$(PROJECT_DIR)/乐销/SDKFile/SDK1.6.2",
 					"$(PROJECT_DIR)/乐销/Vender/潍坊银行/DependenceSDK",
 				);
-				MARKETING_VERSION = 2.0.23;
+				MARKETING_VERSION = 2.0.24;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-lsqlite3",
@@ -5401,7 +5416,7 @@
 					"$(PROJECT_DIR)/乐销/SDKFile/SDK1.6.2",
 					"$(PROJECT_DIR)/乐销/Vender/潍坊银行/DependenceSDK",
 				);
-				MARKETING_VERSION = 2.0.23;
+				MARKETING_VERSION = 2.0.24;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-lsqlite3",

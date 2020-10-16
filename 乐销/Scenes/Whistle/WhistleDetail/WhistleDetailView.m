@@ -80,7 +80,7 @@
     [self addSubview:self.problemDetail];
     [self addSubview:self.type];
     [self addSubview:self.typeDetail];
-
+    
     [self addSubview:self.photo];
     
     //初始化页面
@@ -95,7 +95,7 @@
     self.type.leftTop = XY(W(30),W(25));
     [self.typeDetail fitTitle:UnPackStr(model.categoryName) variable:SCREEN_WIDTH - self.type.right - W(60)];
     self.typeDetail.leftTop = XY(self.type.right + W(30),self.type.top);
-
+    
     
     [self.problem fitTitle:@"问题描述" variable:0];
     self.problem.leftTop = XY(W(30),self.type.bottom+W(17));
@@ -103,7 +103,7 @@
     self.problemDetail.leftTop = XY(self.problem.right + W(30),self.problem.top);
     [self.photo fitTitle:@"照片信息" variable:0];
     self.photo.leftTop = XY(W(30),[self addLineFrame:CGRectMake(W(30), MAX(self.problemDetail.bottom, self.problem.bottom)+W(17), SCREEN_WIDTH - W(60), 1)]+W(20));
-
+    
     //设置总高度
     self.height = self.photo.bottom;
 }
@@ -172,13 +172,13 @@
     [self addSubview:self.labelBg];
     [self addSubview:self.status];
     [self addSubview:self.progress];
-
+    
 }
 
 #pragma mark 刷新view
 - (void)resetViewWithModel:(ModelWhistleList *)model{
     self.model = model;
-
+    
     [self removeSubViewWithTag:TAG_LINE];//移除线
     [self addLineFrame:CGRectMake(W(30), 0, SCREEN_WIDTH - W(60), 1)];
     //刷新view
@@ -194,7 +194,7 @@
     self.status.center = self.labelBg.center;
     
     self.progress.leftTop = XY(W(30), self.title.bottom+W(17));
-
+    
     NSMutableArray * aryDatas = [NSMutableArray new];
     [aryDatas addObject:^(){
         ModelBaseData * modelItem = [ModelBaseData new];
@@ -204,15 +204,14 @@
         modelItem.isSelected = true;
         return modelItem;
     }()];
-    if (isStr(model.solutionResult)) {
+    if (model.isPlatform==0) {
         [aryDatas addObject:^(){
             ModelBaseData * modelItem = [ModelBaseData new];
-            modelItem.string = [GlobalMethod exchangeTimeWithStamp:model.whistleTime andFormatter:TIME_MIN_SHOW];
+            modelItem.string = [GlobalMethod exchangeTimeWithStamp:model.pushTime andFormatter:TIME_MIN_SHOW];
             modelItem.subString = @"社区:";
-            modelItem.thirdString = model.solutionResult;
+            modelItem.thirdString =model.isAutoPush?@"该事项因超时自动推送至中心处理":@"该事项已经由社区发起吹哨推送至中心处理";
             return modelItem;
         }()];
-    }else{
         if (isAry(model.results)) {
             for (ModelWhistleProgress *item in model.results) {
                 [aryDatas addObject:^(){
@@ -224,23 +223,52 @@
                 }()];
             }
         }
+    }else{
+        [aryDatas addObject:^(){
+            ModelBaseData * modelItem = [ModelBaseData new];
+            modelItem.string = [GlobalMethod exchangeTimeWithStamp:model.handleTime andFormatter:TIME_MIN_SHOW];
+            modelItem.subString = @"社区:";
+            modelItem.thirdString = UnPackStr(model.solutionResult);
+            return modelItem;
+        }()];
     }
+    //    if (isStr(model.solutionResult)) {
+    //        [aryDatas addObject:^(){
+    //            ModelBaseData * modelItem = [ModelBaseData new];
+    //            modelItem.string = [GlobalMethod exchangeTimeWithStamp:model.whistleTime andFormatter:TIME_MIN_SHOW];
+    //            modelItem.subString = @"社区:";
+    //            modelItem.thirdString = model.solutionResult;
+    //            return modelItem;
+    //        }()];
+    //    }else{
+    //        if (isAry(model.results)) {
+    //            for (ModelWhistleProgress *item in model.results) {
+    //                [aryDatas addObject:^(){
+    //                    ModelBaseData * modelItem = [ModelBaseData new];
+    //                    modelItem.string = UnPackStr(item.opsTime);
+    //                    modelItem.subString = [NSString stringWithFormat:@"%@:",item.deptName];
+    //                    modelItem.thirdString = item.internalBaseClassDescription;
+    //                    return modelItem;
+    //                }()];
+    //            }
+    //        }
+    //    }
     //设置总高度
     CGFloat top = [self addDot:aryDatas top:self.progress.top +W(1)];
-      if (model.ary9UrlImages.count) {
-          UIImageView * iv = [UIImageView new];
-          iv.backgroundColor = [UIColor clearColor];
-          iv.contentMode = UIViewContentModeScaleAspectFill;
-          iv.clipsToBounds = true;
-          iv.widthHeight = XY(W(50),W(50));
-          iv.leftTop = XY(W(144),top);
-          [iv sd_setImageWithModel:model.ary9UrlImages.firstObject placeholderImageName:IMAGE_BIG_DEFAULT];
-          [iv addTarget:self action:@selector(imageClick:)];
-          [self addSubview:iv];
-          top = iv.bottom + W(27);
-      }
-      //设置总高度
-      self.height = top;
+    if (model.ary9UrlImages.count) {
+        UIImageView * iv = [UIImageView new];
+        iv.backgroundColor = [UIColor clearColor];
+        iv.contentMode = UIViewContentModeScaleAspectFill;
+        iv.clipsToBounds = true;
+        iv.widthHeight = XY(W(50),W(50));
+        iv.leftTop = XY(W(144),top);
+        [iv sd_setImageWithModel:model.ary9UrlImages.firstObject placeholderImageName:IMAGE_BIG_DEFAULT];
+        [iv addTarget:self action:@selector(imageClick:)];
+        [self addSubview:iv];
+        top = iv.bottom + W(27);
+    }
+    //设置总高度
+    self.height = top;
     
 }
 - (void)imageClick:(UITapGestureRecognizer *)tap{
@@ -254,7 +282,7 @@
 - (CGFloat)addDot:(NSArray *)aryBtns top:(CGFloat)top{
     for (int i = 0; i<aryBtns.count; i++) {
         ModelBaseData * modelData = aryBtns[i];
-
+        
         UILabel * labelTime = [UILabel new];
         labelTime.font = [UIFont systemFontOfSize:F(12) weight:UIFontWeightRegular];
         labelTime.textColor = COLOR_999;
@@ -265,7 +293,7 @@
         UILabel * label = [UILabel new];
         label.fontNum = F(15);
         label.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightMedium];
-
+        
         label.textColor = COLOR_333;
         [label fitTitle:modelData.subString variable:0];
         label.leftTop = XY(labelTime.left, labelTime.bottom +W(10));
@@ -275,7 +303,7 @@
         labelSub.fontNum = F(15);
         labelSub.textColor = COLOR_333;
         labelSub.numberOfLines = 0;
-        [labelSub fitTitle:modelData.thirdString variable:W(200)];
+        [labelSub fitTitle:modelData.thirdString variable:W(180)];
         
         labelSub.leftTop = modelData.isSelected?XY(label.right+W(3), label.top):XY(labelTime.left, label.bottom +W(10));
         [self addSubview:labelSub];
@@ -290,7 +318,7 @@
         }
         [self addSubview:viewDot];
         top = labelSub.bottom + W(25);
-    
+        
     }
     return top+W(2);
 }
@@ -320,7 +348,7 @@
         _satisfaction.numberOfLines = 1;
         _satisfaction.lineSpace = 0;
         [_satisfaction fitTitle:@"满意程度" variable:0];
-
+        
     }
     return _satisfaction;
 }
@@ -332,7 +360,7 @@
         _content.numberOfLines = 1;
         _content.lineSpace = 0;
         [_content fitTitle:@"评论内容" variable:0];
-
+        
     }
     return _content;
 }
@@ -340,7 +368,7 @@
     if (_textView == nil) {
         _textView = [PlaceHolderTextView new];
         _textView.backgroundColor = [UIColor clearColor];
-//        _textView.delegate = self;
+        //        _textView.delegate = self;
         [GlobalMethod setLabel:_textView.placeHolder widthLimit:0 numLines:0 fontNum:F(15) textColor:COLOR_999 text:@"请输入评价内容…"];
         [_textView setTextColor:COLOR_333];
     }
@@ -354,7 +382,7 @@
         _viewBG.backgroundColor = [UIColor colorWithHexString:@"FCFCFC"];
         [_viewBG addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:10 lineWidth:1 lineColor:[UIColor colorWithHexString:@"EFF2F1"]];
         
-
+        
     }
     return _viewBG;
 }
@@ -414,7 +442,7 @@
     [self addSubview:self.btn];
     [self addSubview:self.lineLeft];
     [self addSubview:self.lineRight];
-
+    
     //初始化页面
     [self resetViewWithModel:nil];
 }
@@ -426,16 +454,16 @@
     self.comment.centerXTop = XY(SCREEN_WIDTH/2.0,0);
     self.lineLeft.rightCenterY = XY(self.comment.left - W(15), self.comment.centerY);
     self.lineRight.leftCenterY = XY(self.comment.right + W(15), self.comment.centerY);
-
+    
     
     self.satisfaction.leftTop = XY(W(30),self.comment.bottom+W(17));
     self.starView.leftCenterY = XY(self.satisfaction.right + W(30),self.satisfaction.centerY);
-
-
+    
+    
     self.content.leftTop = XY(W(30),self.satisfaction.bottom+W(33));
     
     self.viewBG.leftTop = XY(W(122),self.content.top-W(15));
-
+    
     self.textView.widthHeight = XY(self.viewBG.width - W(30),self.viewBG.height -  W(30));
     self.textView.leftTop = XY(self.viewBG.left + W(15),self.viewBG.top+W(15));
     
@@ -527,12 +555,12 @@
     self.starView.leftCenterY = XY(self.satisfaction.right + W(30),self.satisfaction.centerY);
     [self.starView setCurrentScore:model.score];
     
-
+    
     self.content.leftTop = XY(W(30),self.satisfaction.bottom+W(17));
     
     [self.comment fitTitle:UnPackStr(model.evaluation) variable:W(220)];
     self.comment.leftTop = XY(self.satisfaction.right + W(30),self.content.top);
-
+    
     //设置总高度
     self.height = self.comment.bottom + W(20);
 }

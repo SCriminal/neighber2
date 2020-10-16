@@ -27,6 +27,8 @@
 //unit login
 #import <WXJSSDK/WXJSSDK.h>
 #import <JISSDK/JISSDK.h>
+#import "NoticeAlertView.h"
+
 @interface AppDelegate ()<UIAlertViewDelegate,UNUserNotificationCenterDelegate,WXApiDelegate,WeiboSDKDelegate>{
 
 }
@@ -81,6 +83,7 @@
     [AMapServices sharedServices].apiKey = MAPID;
     //注册微信ID
     [WXApiManager registerApp];
+    [self registerMessageReceive];
     //配置阿里推送
     //阿里云推送zaishuo
     [CloudPushSDK autoInit:^(CloudPushCallbackResult *res) {
@@ -99,7 +102,7 @@
 #if DEBUG
     [ISSPaySDK payBankID:@"802" environmentMode:ISSBankSDKEnvironmentMode_ST scene:ISSBankSDKUseScenePay];
 #else
-    [ISSPaySDK payBankID:@"802" environmentMode:ISSBankSDKEnvironmentMode_PRD scene:ISSBankSDKUseScenePay];
+    [ISSPaySDK payBankID:@"802" environmentMode:ISSBankSDKEnvironmentMode_ST scene:ISSBankSDKUseScenePay];
 #endif
     [DHJSSDKManager registerApp];
 }
@@ -250,4 +253,22 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo
     return true;
 }
 
+- (void) registerMessageReceive {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(onMessageReceived:)
+                                                 name:@"CCPDidReceiveMessageNotification"
+                                               object:nil];
+}
+- (void)onMessageReceived:(NSNotification *)notification {
+    CCPSysMessage *message = [notification object];
+    NSString *title = [[NSString alloc] initWithData:message.title encoding:NSUTF8StringEncoding];
+    NSString *body = [[NSString alloc] initWithData:message.body encoding:NSUTF8StringEncoding];
+    NSLog(@"Receive message title: %@, content: %@.", title, body);
+    static NoticeAlertView * alertView = nil;
+       if (alertView == nil) {
+           alertView = [NoticeAlertView new];
+       }
+       [alertView resetViewWithModel:body];
+       [self.window addSubview:alertView];
+}
 @end

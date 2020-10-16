@@ -25,13 +25,13 @@
 #pragma mark nav right click
 - (void)jump{
 //    [ISSPaySDK payBankID:@"802" environmentMode:ISSBankSDKEnvironmentMode_UAT scene:ISSBankSDKUseScenePay];
-    [GB_Nav pushVCName:@"EHomeMainVC" animated:true];
-//    [self payWithModel:^(){
-//        EHomePayWeichatInfo * model = [EHomePayWeichatInfo new];
-//        model.payOrderNo = @"1315553287637958656";
-//        model.fee = 123.16;
-//        return model;
-//    }()];
+//    [GB_Nav pushVCName:@"EHomeMainVC" animated:true];
+    [self payWithModel:^(){
+        EHomePayWeichatInfo * model = [EHomePayWeichatInfo new];
+        model.payOrderNo = @"1315553287637958656";
+        model.fee = 123.16;
+        return model;
+    }()];
  
 }
 //app机构级的签约用机构号机构密钥计算签名    商户号：802201058120000       机构号：802202007210001   机构密钥：EB70B2F420266A3CA6426D82E8A7D2
