@@ -43,6 +43,7 @@
 #define IMAGEURL_HEAD @"http://img.zhongcheyun.cn"
 //微信 appid
 #define WXAPPID @"wx6b2248eb6d421951"
+#define WXAPPSECRET @"63660a9793acd769aa784b0f3780e98e"
 #define WXAPPLINK  @"https://www.zhongcheyun.cn/neighborresident/"
 #define WECHAT_UPDATE
 //hailuo

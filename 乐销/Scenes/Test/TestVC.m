@@ -1,7 +1,7 @@
 
 #import "TestVC.h"
 #import <ISSBankSDK/ISSBankSDK.h>
-
+#import "WXApiManager.h"
 @interface TestVC ()
 
 @end
@@ -24,6 +24,8 @@
 }
 #pragma mark nav right click
 - (void)jump{
+//    [[WXApiManager sharedManager]loginApp];
+    return;
 //    [ISSPaySDK payBankID:@"802" environmentMode:ISSBankSDKEnvironmentMode_UAT scene:ISSBankSDKUseScenePay];
 //    [GB_Nav pushVCName:@"EHomeMainVC" animated:true];
     [self payWithModel:^(){

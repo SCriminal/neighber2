@@ -1,15 +1,12 @@
 
 
 #import <Foundation/Foundation.h>
-#import <WXApi.h>
-//model
-#import "ModelWXApiReq.h"
 
 
-@interface WXApiManager : NSObject<WXApiDelegate>
+@interface WXApiManager : NSObject
 //单例
 + (instancetype)sharedManager;
 //注册
 + (void)registerApp;
-
+- (void)loginApp;
 @end
