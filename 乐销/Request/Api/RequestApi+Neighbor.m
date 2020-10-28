@@ -482,8 +482,13 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
                           @"page":NSNumber.dou(page),
                           @"count":NSNumber.dou(count),
                           @"categoryAlias":RequestStrKey(categoryAlias),
-                          @"scope":NSNumber.dou(1)};
-    [self getUrl:@"/resident/content/list/total" delegate:delegate parameters:dic success:success failure:failure];
+                          @"scope":[GlobalMethod isLoginSuccess]?NSNumber.dou(4):NSNumber.dou(1)};
+    if ([GlobalMethod isLoginSuccess]) {
+        [self getUrl:@"/resident/content/list/1_3_5/area/1/total" delegate:delegate parameters:dic success:success failure:failure];
+    }else{
+        [self getUrl:@"/resident/content/list/1_3_5/1/total" delegate:delegate parameters:dic success:success failure:failure];
+
+    }
 }
 
 /**

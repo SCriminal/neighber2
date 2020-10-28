@@ -109,6 +109,6 @@
    <ArchiveAction
       buildConfiguration = "Debug"
       customArchiveName = "d"
-      revealArchiveInOrganizer = "NO">
+      revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

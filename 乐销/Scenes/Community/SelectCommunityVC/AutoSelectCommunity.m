@@ -113,6 +113,8 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(AutoSelectCommunity)
             [self initLocation];
         }else{
             ModelAddress * modelAddress = [ModelAddress initWithAMapLocationReGeocode:regeocode location:location];
+            [GlobalMethod writeModel:modelAddress key:LOCAL_LOCATION exchange:false];
+            [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_LOCATION_CHANGE object:nil];
             [self fetchAddress:modelAddress];
         }
     }];

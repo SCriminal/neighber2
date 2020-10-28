@@ -712,8 +712,8 @@
             timestampString = "607260356.4647371"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "612"
-            endingLineNumber = "612"
+            startingLineNumber = "617"
+            endingLineNumber = "617"
             landmarkName = "+requestEditArchiveWithEstateid:cellPhone:buildingName:unitName:roomName:tag:lng:lat:job:enterprise:isPart:identity:scope:realName:idNumber:ehomeRoomId:delegate:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -1615,8 +1615,8 @@
             filePath = "&#x4e50;&#x9500;/Request/Api/RequestApi+Neighbor.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1111"
-            endingLineNumber = "1111"
+            startingLineNumber = "1116"
+            endingLineNumber = "1116"
             landmarkName = "RequestApi(Neighbor)"
             landmarkType = "3">
          </BreakpointContent>
@@ -2799,8 +2799,8 @@
             filePath = "&#x4e50;&#x9500;/Request/Api/RequestApi+Neighbor.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1525"
-            endingLineNumber = "1525"
+            startingLineNumber = "1530"
+            endingLineNumber = "1530"
             landmarkName = "+requestMsgListWithCategories:page:count:delegate:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3119,8 +3119,8 @@
             filePath = "&#x4e50;&#x9500;/Request/Api/RequestApi+Neighbor.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1101"
-            endingLineNumber = "1101"
+            startingLineNumber = "1106"
+            endingLineNumber = "1106"
             landmarkName = "+requestBindDeviceIdWithDeviceID:delegate:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3135,8 +3135,8 @@
             filePath = "&#x4e50;&#x9500;/Request/Api/RequestApi+Neighbor.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1097"
-            endingLineNumber = "1097"
+            startingLineNumber = "1102"
+            endingLineNumber = "1102"
             landmarkName = "+requestBindDeviceIdWithDeviceID:delegate:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -3647,8 +3647,8 @@
             filePath = "&#x4e50;&#x9500;/Request/Api/RequestApi+Neighbor.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1773"
-            endingLineNumber = "1773"
+            startingLineNumber = "1778"
+            endingLineNumber = "1778"
             landmarkName = "+requestAreaWithDelegate:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -6243,6 +6243,70 @@
             endingLineNumber = "111"
             landmarkName = "-requestList"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8B2E1B1B-906A-4A28-9587-478D105DE5CF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/General/BaseViewController/BaseVC+Location.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
+            landmarkName = "-initLocation"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0304F374-287B-45C8-BE1F-5A3942A68EE8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/Community/CommunityView.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "-requestArchive"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0304F374-287B-45C8-BE1F-5A3942A68EE8 - 906b05444dbaeb50"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CommunityNavView requestArchive]"
+                  moduleName = "Neighbor"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/suilindong/Desktop/%E9%82%BB%E9%80%9A%202/%E4%B9%90%E9%94%80/Scenes/Community/CommunityView.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "115"
+                  endingLineNumber = "115"
+                  offsetFromSymbolStart = "168">
+               </Location>
+               <Location
+                  uuid = "0304F374-287B-45C8-BE1F-5A3942A68EE8 - 536b18f20dc44701"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__34-[CommunityNavView requestArchive]_block_invoke"
+                  moduleName = "Neighbor"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/suilindong/Desktop/%E9%82%BB%E9%80%9A%202/%E4%B9%90%E9%94%80/Scenes/Community/CommunityView.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "115"
+                  endingLineNumber = "115"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
