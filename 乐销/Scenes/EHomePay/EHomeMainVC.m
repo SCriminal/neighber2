@@ -143,6 +143,12 @@
 }
 
 - (void)requestArchive{
+    [self reconfigView];
+           [self requestNewsList];
+           [self requestWuyeInfo];
+           [self requestWaitPayInfo];
+    return;
+    
     if ([GlobalData sharedInstance].modelEHomeArchive.iDProperty) {
         [self.topView resetViewWithModel:[GlobalData sharedInstance].modelEHomeArchive];
         [self reconfigView];
@@ -185,7 +191,7 @@
 }
 
 - (void)requestWuyeInfo{
-    [RequestApi requestEHomeWuyeInfoWithareaId:@"945204103984840704" delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestEHomeWuyeInfoWithareaId:@"1319037237572272128" delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         ModelEHomeWuYeInfo * model = [ModelEHomeWuYeInfo modelObjectWithDictionary:response];
         [self.companyView resetViewWithModel:model];
         [self reconfigView];
@@ -195,7 +201,7 @@
 }
 
 - (void)requestWaitPayInfo{
-    [RequestApi requestEHomeWaitPayListWithtelephone:@"17685571713" roomId:@"945220116612780032" delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestEHomeWaitPayListWithtelephone:@"13854851931" roomId:@"1319038067000082432" delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         NSArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelEHomeWaitPayList"];
         [self.orderView resetViewWithModel:ary];
         
@@ -318,7 +324,6 @@
         self.head.image = [UIImage imageNamed:@"EHome_租户"];
     }else {
         self.head.image = [UIImage imageNamed:@"EHome_业主"];
-        
     }
     [self.title fitTitle:modelArchive.iDProperty?modelArchive.typeShow:@"暂无业主" variable:0];
     self.title.leftTop = XY(self.head.right + W(15), self.head.top + W(3));

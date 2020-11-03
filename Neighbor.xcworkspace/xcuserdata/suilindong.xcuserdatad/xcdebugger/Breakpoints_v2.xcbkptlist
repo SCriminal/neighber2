@@ -5817,14 +5817,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "6254A66F-B1D8-4E6F-BABB-1DC5590C994B"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4e50;&#x9500;/Scenes/EHomePay/EHomeMainVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "416"
-            endingLineNumber = "416"
+            startingLineNumber = "421"
+            endingLineNumber = "421"
             landmarkName = "-phoneClick"
             landmarkType = "7">
          </BreakpointContent>
@@ -5903,8 +5903,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/EHomePay/EHomeWaitPayListVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "-requestList"
             landmarkType = "7">
          </BreakpointContent>
@@ -6305,6 +6305,150 @@
                   startingLineNumber = "115"
                   endingLineNumber = "115"
                   offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D8170D90-FAA5-41B6-83F2-BD7286E61F11"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/Order/OrderList/OrderDetail/OrderDetailVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
+            landmarkName = "-requestPay:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D8170D90-FAA5-41B6-83F2-BD7286E61F11 - d11a87113d77b3bd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[OrderDetailVC requestPay:]"
+                  moduleName = "Neighbor"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/suilindong/Desktop/%E9%82%BB%E9%80%9A%202/%E4%B9%90%E9%94%80/Scenes/Order/OrderList/OrderDetail/OrderDetailVC.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "229"
+                  endingLineNumber = "229"
+                  offsetFromSymbolStart = "68">
+               </Location>
+               <Location
+                  uuid = "D8170D90-FAA5-41B6-83F2-BD7286E61F11 - 17343172e6ee90cf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__28-[OrderDetailVC requestPay:]_block_invoke"
+                  moduleName = "Neighbor"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/suilindong/Desktop/%E9%82%BB%E9%80%9A%202/%E4%B9%90%E9%94%80/Scenes/Order/OrderList/OrderDetail/OrderDetailVC.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "229"
+                  endingLineNumber = "229"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E68CE7B6-F764-4FA1-B472-7519C93C69B8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/EHomePay/EHomeMainVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
+            landmarkName = "-requestWuyeInfo"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E68CE7B6-F764-4FA1-B472-7519C93C69B8 - 7df19db8e190d2f0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[EHomeMainVC requestWuyeInfo]"
+                  moduleName = "Neighbor"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/suilindong/Desktop/%E9%82%BB%E9%80%9A%202/%E4%B9%90%E9%94%80/Scenes/EHomePay/EHomeMainVC.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "194"
+                  endingLineNumber = "194"
+                  offsetFromSymbolStart = "37">
+               </Location>
+               <Location
+                  uuid = "E68CE7B6-F764-4FA1-B472-7519C93C69B8 - d0fff4c925710e6b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__30-[EHomeMainVC requestWuyeInfo]_block_invoke"
+                  moduleName = "Neighbor"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/suilindong/Desktop/%E9%82%BB%E9%80%9A%202/%E4%B9%90%E9%94%80/Scenes/EHomePay/EHomeMainVC.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "194"
+                  endingLineNumber = "194"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7D75A4B1-B360-4804-A04C-0C98DB794276"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/EHomePay/EHomeMainVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
+            landmarkName = "-requestWaitPayInfo"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7D75A4B1-B360-4804-A04C-0C98DB794276 - e7df9a9e8e7fa18c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[EHomeMainVC requestWaitPayInfo]"
+                  moduleName = "Neighbor"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/suilindong/Desktop/%E9%82%BB%E9%80%9A%202/%E4%B9%90%E9%94%80/Scenes/EHomePay/EHomeMainVC.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "204"
+                  endingLineNumber = "204"
+                  offsetFromSymbolStart = "37">
+               </Location>
+               <Location
+                  uuid = "7D75A4B1-B360-4804-A04C-0C98DB794276 - 222000b07422a04e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__33-[EHomeMainVC requestWaitPayInfo]_block_invoke"
+                  moduleName = "Neighbor"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/suilindong/Desktop/%E9%82%BB%E9%80%9A%202/%E4%B9%90%E9%94%80/Scenes/EHomePay/EHomeMainVC.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "204"
+                  endingLineNumber = "204"
+                  offsetFromSymbolStart = "12">
                </Location>
             </Locations>
          </BreakpointContent>

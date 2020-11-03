@@ -242,7 +242,7 @@
      [GlobalMethod exchangeDicToJson:ary]
      */
     
-    [RequestApi requestEHomePayWithtelephone:@"17685571713" feesIds:[NSString stringWithFormat:@"[%@]",[ary componentsJoinedByString:@","]] feeAmounts:NSNumber.dou(numAll).stringValue payType:@"1" transType:@"1" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestEHomePayWithtelephone:@"13854851931" feesIds:[NSString stringWithFormat:@"[%@]",[ary componentsJoinedByString:@","]] feeAmounts:NSNumber.dou(numAll).stringValue payType:@"1" transType:@"1" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         EHomePayWeichatInfo * model = [EHomePayWeichatInfo modelObjectWithDictionary:response];
         [self payWithModel:model];
         NSLog(@"aa");
@@ -260,9 +260,9 @@
         @"orderNo": model.payOrderNo,
         @"orderAmt": NSNumber.dou(model.fee).stringValue
     };
-    ISSPaySDK *paySDK = [ISSPaySDK payBankID:@"866" environmentMode:ISSBankSDKEnvironmentMode_UAT scene:ISSBankSDKUseScenePay];
-    [paySDK showPayAddedTo:self url:@"PYOrderDeal.do" channelID:@"P2" requestHeader:requestHeader requestData:requestData success:^{
-        
+    ISSPaySDK *paySDK = [ISSPaySDK payBankID:@"802" environmentMode:ISSBankSDKEnvironmentMode_ST scene:ISSBankSDKUseScenePay];
+    [paySDK showPayAddedTo:self url:@"PYOrderDeal.do" channelID:@"B2" requestHeader:requestHeader requestData:requestData success:^{
+
         NSLog(@"%s", __func__);
         
     } failure:^(NSString *message) {

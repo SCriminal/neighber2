@@ -40,7 +40,8 @@
                          delegate:(id <RequestDelegate>)delegate
                           success:(void (^)(NSDictionary * response, id mark))success
                           failure:(void (^)(NSString * errorStr, id mark))failure{
-    NSDictionary *dic = @{@"phone":[GlobalData sharedInstance].GB_UserModel.phone};
+//    NSDictionary *dic = @{@"phone":[GlobalData sharedInstance].GB_UserModel.phone};
+    NSDictionary *dic = @{@"phone":@"13854851931"};
     [self postUrl:@"/resident/ehome/user" delegate:delegate parameters:dic success:success failure:failure];
 }
 

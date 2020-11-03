@@ -5356,7 +5356,7 @@
 					"$(PROJECT_DIR)/乐销/SDKFile/SDK1.6.2",
 					"$(PROJECT_DIR)/乐销/Vender/潍坊银行/DependenceSDK",
 				);
-				MARKETING_VERSION = 2.0.24;
+				MARKETING_VERSION = 2.0.25;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-lsqlite3",
@@ -5416,7 +5416,7 @@
 					"$(PROJECT_DIR)/乐销/SDKFile/SDK1.6.2",
 					"$(PROJECT_DIR)/乐销/Vender/潍坊银行/DependenceSDK",
 				);
-				MARKETING_VERSION = 2.0.24;
+				MARKETING_VERSION = 2.0.25;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-lsqlite3",

@@ -103,7 +103,8 @@
 
 #pragma mark request
 - (void)requestList{
-    [RequestApi requestEHomeWaitPayListWithtelephone:@"17685571713" roomId:@"945220116612780032" delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [GlobalData sharedInstance].modelEHome.token = @"543999308e9d4ddfb28e63fd4e1669d58bb7";
+    [RequestApi requestEHomeWaitPayListWithtelephone:@"13854851931" roomId:@"1319038067000082432" delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         //        ModelEhomeWaitPayInfo * model = [ModelEhomeWaitPayInfo modelObjectWithDictionary:response];
         self.aryDatas = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelEHomeWaitPayList"];
         [self.bottomView resetViewWithModel:self.aryDatas];
@@ -111,7 +112,6 @@
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
     }];
-    
 }
 - (void)requestPay{
     EHomePayOrderVC * vc = [EHomePayOrderVC new];
