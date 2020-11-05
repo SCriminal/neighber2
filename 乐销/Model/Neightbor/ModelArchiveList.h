@@ -43,6 +43,7 @@
 @property (nonatomic, assign) double isParty;
 @property (nonatomic, strong) NSString *typeShow;
 @property (nonatomic, assign) double ehomeRoomId;
+@property (nonatomic, assign) double ehomeAreaId;
 
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;

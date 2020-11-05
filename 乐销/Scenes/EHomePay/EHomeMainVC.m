@@ -143,12 +143,6 @@
 }
 
 - (void)requestArchive{
-    [self reconfigView];
-           [self requestNewsList];
-           [self requestWuyeInfo];
-           [self requestWaitPayInfo];
-    return;
-    
     if ([GlobalData sharedInstance].modelEHomeArchive.iDProperty) {
         [self.topView resetViewWithModel:[GlobalData sharedInstance].modelEHomeArchive];
         [self reconfigView];
@@ -156,12 +150,32 @@
         [self requestWuyeInfo];
         [self requestWaitPayInfo];
     }else{
-        [RequestApi requestArchiveListWithPage:1 count:2000 estateId:0 delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-            [self.topView resetViewWithModel:[GlobalData sharedInstance].modelEHomeArchive];
-            [self reconfigView];
+        [RequestApi requestEHomeBindHomeList:[GlobalData sharedInstance].GB_UserModel.phone delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+            NSArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelEhomeHomeItem"];
+            if (ary.count) {
+                ModelEhomeHomeItem * item = ary.firstObject;
+                [GlobalData sharedInstance].modelEHomeArchive = ^(){
+                    ModelArchiveList * archive = [ModelArchiveList new];
+                    archive.ehomeRoomId = item.roomId.doubleValue;
+                    archive.ehomeAreaId = item.areaId.doubleValue;
+                    archive.tag = 3;
+                    archive.iDProperty = item.iDProperty.doubleValue;
+                    archive.estateName = item.areaName;
+                    archive.buildingName = item.floorName;
+                    archive.roomName = item.roomNo;
+                    return archive;
+                }();
+                [self requestArchive];
+            }
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
             
         }];
+//        [RequestApi requestArchiveListWithPage:1 count:2000 estateId:0 delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+//            [self.topView resetViewWithModel:[GlobalData sharedInstance].modelEHomeArchive];
+//            [self reconfigView];
+//        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+//
+//        }];
     }
 }
 - (void)requestModule{
@@ -183,11 +197,9 @@
         [self.autoNewsView resetWithAry:[ary fetchValues:@"title"]];
         
         [self reconfigView];
-        
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
         
     }];
-    
 }
 
 - (void)requestWuyeInfo{

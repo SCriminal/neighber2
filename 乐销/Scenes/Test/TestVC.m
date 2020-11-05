@@ -2,6 +2,8 @@
 #import "TestVC.h"
 #import <ISSBankSDK/ISSBankSDK.h>
 #import "WXApiManager.h"
+//request
+#import "RequestApi+EHomePay.h"
 @interface TestVC ()
 
 @end
@@ -25,16 +27,17 @@
 #pragma mark nav right click
 - (void)jump{
 //    [[WXApiManager sharedManager]loginApp];
-//    [GB_Nav pushVCName:@"EHomeWaitPayListVC" animated:true];
-    [self payWithMode2:^(){
-        EHomePayWeichatInfo * model = [EHomePayWeichatInfo new];
-        model.payOrderNo = @"1323494611456495616";
-        model.fee = 0.1;
-        return model;
-    }()];
- 
+    [GB_Nav pushVCName:@"EHomeMainVC" animated:true];
+//    [self payWithMode2:^(){
+//        EHomePayWeichatInfo * model = [EHomePayWeichatInfo new];
+//        model.payOrderNo = @"1323494611456495616";
+//        model.fee = 0.1;
+//        return model;
+//    }()];
+//    [self reqeustKey];
 }
-//app机构级的签约用机构号机构密钥计算签名    商户号：802201058120000       机构号：802202007210001   机构密钥：EB70B2F420266A3CA6426D82E8A7D2
+//app机构级的签约用机构号机构密钥计算签名    商户号：802200958120003       机构号：802202007210001   机构密钥：EB70B2F420266A3CA6426D82E8A7D2
+//商户号：802200958120003    密钥：C9F983293AA603DC06832B3CB08BEA   用这个@S_Criminal
 - (void)payWithModel:(EHomePayWeichatInfo *)model{
     NSDictionary * requestHeader = @{
         @"opId": @"ebus_PYOrderDealApp",
@@ -49,7 +52,7 @@
         @"notifyURL" : @"",
         @"currency" : @"CNY",
         @"signFlag" : @"01",
-        @"oneMerchNo" : @"802201058120000",
+        @"oneMerchNo" : @"802200958120003",
         @"secMerchNo" : @"",
         @"certNo" : @"",
         @"orderNo" : @"1323494611456495616",
@@ -80,7 +83,8 @@
     NSDictionary * requestData = @{
         @"orderNo": model.payOrderNo,
         @"orderAmt": NSNumber.dou(model.fee).stringValue,
-        @"oneMerchNo" : @"802201058120000",
+        @"oneMerchNo" : @"802200958120003",
+//        @"epiKey":@"C9F983293AA603DC06832B3CB08BEA"
     };
     ISSPaySDK *paySDK = [ISSPaySDK payBankID:@"802" environmentMode:ISSBankSDKEnvironmentMode_ST scene:ISSBankSDKUseScenePay];
     [paySDK showPayAddedTo:self url:@"PYOrderDeal.do" channelID:@"B2" requestHeader:requestHeader requestData:requestData success:^{
@@ -97,6 +101,14 @@
     }];
     
     
+}
+- (void)reqeustKey{
+    [RequestApi requestEpiKey:@"04f262784fc1c21c32d2aa4f564e928500c19bc939a59f4ebd11a27b633dce6396542fa58e55992490120c1fdd07cfc454abd0ca5042e4f02b6a821be0582d329da6b957ec9642dc60e2c2f276bcf72ce2ffbf3212d3495fc7235dee2e5b5dd13d587a4971719287ff8c02234ccec5f1b7b6d1386cad6beadf61fd241c1f6a8883b8202538e4e31a4c" delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        NSString * epi = [response stringValueForKey:@"plaintext"];
+        NSLog(@"%@",epi);
+    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+        
+    }];
 }
 @end
 

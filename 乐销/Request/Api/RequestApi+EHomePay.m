@@ -40,8 +40,8 @@
                          delegate:(id <RequestDelegate>)delegate
                           success:(void (^)(NSDictionary * response, id mark))success
                           failure:(void (^)(NSString * errorStr, id mark))failure{
-//    NSDictionary *dic = @{@"phone":[GlobalData sharedInstance].GB_UserModel.phone};
-    NSDictionary *dic = @{@"phone":@"13854851931"};
+    NSDictionary *dic = @{@"phone":[GlobalData sharedInstance].GB_UserModel.phone};
+//    NSDictionary *dic = @{@"phone":@"13854851931"};
     [self postUrl:@"/resident/ehome/user" delegate:delegate parameters:dic success:success failure:failure];
 }
 
@@ -170,5 +170,14 @@
           @"telephone":RequestStrKey(telephone),
       };
       [self requestEHomeSwitchWithDic:dic trxCde:@"EM0007" apiUrl:@"/ehome/mobile/getRoomBind.do" delegate:delegate success:success failure:failure];
+}
++(void)requestEpiKey:(NSString *)ciphertext
+                      delegate:(id <RequestDelegate>)delegate
+                       success:(void (^)(NSDictionary * response, id mark))success
+                       failure:(void (^)(NSString * errorStr, id mark))failure{
+    NSDictionary *dic = @{@"ciphertext":RequestStrKey(ciphertext),
+                          @"key":@"34518b9ab7853dac2e1a2e8f17b8f62e060b143000390b2efecfb50272ac5dd8",
+    };
+    [self postUrl:@"/resident/ehome/1_3_6/sm2" delegate:delegate parameters:dic success:success failure:failure];
 }
 @end

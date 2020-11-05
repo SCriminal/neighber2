@@ -39,6 +39,7 @@ NSString *const kModelArchiveListCityName = @"cityName";
 NSString *const kModelArchiveListEstateName = @"estateName";
 NSString *const kModelArchiveListIsParty = @"isParty";
 NSString *const kModelArchiveListEhomeRoomId = @"ehomeRoomId";
+NSString *const kModelArchiveListEhomeAreaId = @"ehomeAreaId";
 
 
 @interface ModelArchiveList ()
@@ -120,6 +121,8 @@ NSString *const kModelArchiveListEhomeRoomId = @"ehomeRoomId";
             self.estateName = [dict stringValueForKey:kModelArchiveListEstateName];
             self.isParty = [dict doubleValueForKey:kModelArchiveListIsParty];
         self.ehomeRoomId = [dict doubleValueForKey:kModelArchiveListEhomeRoomId];
+        self.ehomeAreaId = [dict doubleValueForKey:kModelArchiveListEhomeAreaId];
+
         switch ((int)self.tag) {
             case 1:
                 self.typeShow = @"业主";
@@ -172,6 +175,7 @@ NSString *const kModelArchiveListEhomeRoomId = @"ehomeRoomId";
     [mutableDict setValue:self.estateName forKey:kModelArchiveListEstateName];
     [mutableDict setValue:[NSNumber numberWithDouble:self.isParty] forKey:kModelArchiveListIsParty];
     [mutableDict setValue:[NSNumber numberWithDouble:self.ehomeRoomId] forKey:kModelArchiveListEhomeRoomId];
+    [mutableDict setValue:[NSNumber numberWithDouble:self.ehomeAreaId] forKey:kModelArchiveListEhomeAreaId];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }

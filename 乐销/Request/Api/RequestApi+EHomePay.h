@@ -77,6 +77,10 @@ NS_ASSUME_NONNULL_BEGIN
   success:(void (^)(NSDictionary * response, id mark))success
   failure:(void (^)(NSString * errorStr, id mark))failure;
 
++(void)requestEpiKey:(NSString *)ciphertext
+delegate:(id <RequestDelegate>)delegate
+ success:(void (^)(NSDictionary * response, id mark))success
+             failure:(void (^)(NSString * errorStr, id mark))failure;
 @end
 
 NS_ASSUME_NONNULL_END
