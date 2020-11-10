@@ -556,6 +556,7 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
  新增
  */
 +(void)requestAddArchiveWithEstateid:(double)estateId
+                            areaCode:(NSString *)areaCode
                            cellPhone:(NSString *)cellPhone
                         buildingName:(NSString *)buildingName
                             unitName:(NSString *)unitName
@@ -573,7 +574,8 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
                             delegate:(id <RequestDelegate>)delegate
                              success:(void (^)(NSDictionary * response, id mark))success
                              failure:(void (^)(NSString * errorStr, id mark))failure{
-    NSDictionary *dic = @{@"estateId":NSNumber.dou(estateId),
+    NSDictionary *dic = @{@"estateId":RequestDoubleKey(estateId),
+                          @"areaCode":RequestStrKey(areaCode),
                           @"cellphone":RequestStrKey(cellPhone),
                           @"buildingName":RequestStrKey(buildingName),
                           @"unitName":RequestStrKey(unitName),
@@ -590,8 +592,13 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
                           @"ehomeRoomId":NSNumber.dou(ehomeRoomId)
                           
     };
-    [self postUrl:@"/resident/resident/archive" delegate:delegate parameters:dic success:success failure:failure];
+    if (isStr(areaCode)) {
+        [self postUrl:@"/resident/resident/archive/1_3_0/areacode" delegate:delegate parameters:dic success:success failure:failure];
+    }else{
+        [self postUrl:@"/resident/resident/archive" delegate:delegate parameters:dic success:success failure:failure];
+    }
 }
+
 /**
  编辑
  */

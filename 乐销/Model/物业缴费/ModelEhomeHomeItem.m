@@ -67,6 +67,8 @@ NSString *const kModelEhomeHomeItemName = @"name";
             self.areaName = [dict stringValueForKey:kModelEhomeHomeItemAreaName];
             self.telephone = [dict stringValueForKey:kModelEhomeHomeItemTelephone];
             self.name = [dict stringValueForKey:kModelEhomeHomeItemName];
+        self.areaCode = [dict stringValueForKey:@"areaCode"];
+
         if ([self.type isEqualToString:@"1"]) {
             self.typeShow = @"业主";
         }else{
@@ -94,6 +96,7 @@ NSString *const kModelEhomeHomeItemName = @"name";
     [mutableDict setValue:self.areaName forKey:kModelEhomeHomeItemAreaName];
     [mutableDict setValue:self.telephone forKey:kModelEhomeHomeItemTelephone];
     [mutableDict setValue:self.name forKey:kModelEhomeHomeItemName];
+    [mutableDict setValue:self.areaCode forKey:@"areaCode"];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }

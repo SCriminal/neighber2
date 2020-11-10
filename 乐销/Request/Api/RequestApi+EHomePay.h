@@ -81,6 +81,10 @@ NS_ASSUME_NONNULL_BEGIN
 delegate:(id <RequestDelegate>)delegate
  success:(void (^)(NSDictionary * response, id mark))success
              failure:(void (^)(NSString * errorStr, id mark))failure;
++(void)requestEHomeAreaID:(NSString *)areaCode
+delegate:(id <RequestDelegate>)delegate
+ success:(void (^)(NSDictionary * response, id mark))success
+                  failure:(void (^)(NSString * errorStr, id mark))failure;
 @end
 
 NS_ASSUME_NONNULL_END

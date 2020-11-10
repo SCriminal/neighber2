@@ -14,10 +14,14 @@
 #import "RequestApi+EHomePay.h"
 //request
 #import "RequestApi+Neighbor.h"
+#import "AuthenticationVC.h"
+#import "EhomeBindAlertView.h"
+
 @interface EHomeArchiveListVC ()
 @property (nonatomic, strong) YellowButton *btnBottom;
 @property (nonatomic, strong) NSMutableArray *aryEhomeData;
 @property (nonatomic, strong) UIView *section1;
+@property (nonatomic, strong) ModelAuthentication *modelIdNumber;
 
 @end
 
@@ -97,7 +101,7 @@
     [self requestList];
     self.tableView.height = self.btnBottom.top - W(15) - NAVIGATIONBAR_HEIGHT;
     [self.view addSubview:self.btnBottom];
-    
+    [self addRefreshHeader];
 }
 
 #pragma mark 添加导航栏
@@ -118,7 +122,9 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         EHomeArchiveListCell * cell = [tableView dequeueReusableCellWithIdentifier:@"EHomeArchiveListCell"];
-        [cell resetCellWithModel:self.aryDatas[indexPath.row]];
+        ModelArchiveList * item = self.aryDatas[indexPath.row];
+        [cell resetCellWithModel:item];
+        cell.iconSelected.highlighted = [GlobalData sharedInstance].modelEHomeArchive.iDProperty && item.iDProperty == [GlobalData sharedInstance].modelEHomeArchive.iDProperty;
         return cell;
     }
     EHomeArchiveItemCell * cell = [tableView dequeueReusableCellWithIdentifier:@"EHomeArchiveItemCell"];
@@ -159,7 +165,12 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return CGFLOAT_MIN;
 }
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0) {
+        [GlobalData sharedInstance].modelEHomeArchive = self.aryDatas[indexPath.row];
+        [self.tableView reloadData];
+    }
+}
 #pragma mark request
 - (void)requestList{
     
@@ -173,11 +184,16 @@
             [self.aryEhomeData removeAllObjects];
             for (ModelEhomeHomeItem * item in ary) {
                 if ([item.type isEqualToString:@"1"]) {
-                    if ([dic objectForKey:NSNumber.str(item.iDProperty)]) {
-                        
-                    }else{
-                        [self.aryEhomeData addObject:item];
+                    bool isEqual = false;
+                    for (NSNumber * num in dic) {
+                        if ([num.stringValue isEqualToString:item.roomId]) {
+                            isEqual = true;
+                            break;
+                        }
                     }
+//                    if (!isEqual) {
+                        [self.aryEhomeData addObject:item];
+//                    }
                 }
             }
             [self.tableView reloadData];
@@ -190,7 +206,51 @@
     
 }
 - (void)requestBind:(ModelEhomeHomeItem *)model{
-//    RequestApi requestAddArchiveWithEstateid:0 cellPhone:model buildingName:<#(nonnull NSString *)#> unitName:<#(nonnull NSString *)#> roomName:<#(nonnull NSString *)#> tag:<#(double)#> lng:<#(nonnull NSString *)#> lat:<#(nonnull NSString *)#> job:<#(nonnull NSString *)#> enterprise:<#(nonnull NSString *)#> isPart:<#(double)#> scope:<#(nonnull NSString *)#> realName:<#(nonnull NSString *)#> idNumber:<#(nonnull NSString *)#> ehomeRoomId:<#(double)#> delegate:<#(nonnull id<RequestDelegate>)#> success:<#^(NSDictionary * _Nonnull response, id  _Nonnull mark)success#> failure:<#^(NSString * _Nonnull errorStr, id  _Nonnull mark)failure#>
+    if (self.modelIdNumber == nil) {
+        [self requestCertify:model];
+        return;
+    }
+    EhomeBindAlertView * view = [EhomeBindAlertView new];
+    [view resetViewWithModel:model];
+    [self.view addSubview:view];
+    WEAKSELF
+    view.blockConfirmClick = ^(ModelEhomeHomeItem *model) {
+        [RequestApi requestAddArchiveWithEstateid:0 areaCode:model.areaCode cellPhone:[GlobalData sharedInstance].GB_UserModel.phone buildingName:model.floorName unitName:model.unitNo roomName:model.roomNo tag:1 lng:nil lat:nil job:nil enterprise:nil isPart:0 scope:nil realName:self.modelIdNumber.realName idNumber:self.modelIdNumber.idNumber ehomeRoomId:model.roomId.doubleValue delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+            [weakSelf refreshHeaderAll];
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+    };
+}
+- (void)requestCertify:(ModelEhomeHomeItem *)model{
+    [RequestApi requestAuthenticationDetailWithDelegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        ModelAuthentication *modelDetail = [ModelAuthentication modelObjectWithDictionary:response];
+        WEAKSELF
+        //                审核状态  1-未提交  2-审核中  10审核通过  11-审核未通过
+        if (modelDetail.status != 10) {
+            ModelBtn * modelDismiss = [ModelBtn modelWithTitle:@"取消" imageName:nil highImageName:nil tag:TAG_LINE color:[UIColor redColor]];
+            modelDismiss.blockClick = ^{
+            };
+            ModelBtn * modelConfirm = [ModelBtn modelWithTitle:@"确认" imageName:nil highImageName:nil tag:TAG_LINE color:COLOR_SUBTITLE];
+            modelConfirm.blockClick = ^{
+                AuthenticationVC * vc = [AuthenticationVC new];
+                vc.blockBack = ^(UIViewController *vc) {
+                    [weakSelf requestCertify:model];
+                };
+                [GB_Nav popLastAndPushVC:vc];
+            };
+            [BaseAlertView initWithTitle:@"提示" content:@"您还没有实名认证，请您先去实名认证" aryBtnModels:@[modelDismiss,modelConfirm] viewShow:self.view];
+        }else{
+            self.modelIdNumber = modelDetail;
+            [weakSelf requestBind:model];
+            
+        }
+        
+        
+    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+        
+    }];
+    
 }
 @end
 
@@ -209,7 +269,8 @@
 - (UIImageView *)iconSelected{
     if (_iconSelected == nil) {
         _iconSelected = [UIImageView new];
-        _iconSelected.image = [UIImage imageNamed:@"select_highlighted"];
+        _iconSelected.image = [UIImage imageNamed:@"select_default"];
+        _iconSelected.highlightedImage = [UIImage imageNamed:@"select_highlighted"];
         _iconSelected.widthHeight = XY(W(19),W(19));
     }
     return _iconSelected;

@@ -120,7 +120,7 @@ NSString *const kModelArchiveListEhomeAreaId = @"ehomeAreaId";
             self.cityName = [dict stringValueForKey:kModelArchiveListCityName];
             self.estateName = [dict stringValueForKey:kModelArchiveListEstateName];
             self.isParty = [dict doubleValueForKey:kModelArchiveListIsParty];
-        self.ehomeRoomId = [dict doubleValueForKey:kModelArchiveListEhomeRoomId];
+        self.ehomeRoomId = [dict numberValueForKey:kModelArchiveListEhomeRoomId];
         self.ehomeAreaId = [dict doubleValueForKey:kModelArchiveListEhomeAreaId];
 
         switch ((int)self.tag) {
@@ -174,7 +174,7 @@ NSString *const kModelArchiveListEhomeAreaId = @"ehomeAreaId";
     [mutableDict setValue:self.cityName forKey:kModelArchiveListCityName];
     [mutableDict setValue:self.estateName forKey:kModelArchiveListEstateName];
     [mutableDict setValue:[NSNumber numberWithDouble:self.isParty] forKey:kModelArchiveListIsParty];
-    [mutableDict setValue:[NSNumber numberWithDouble:self.ehomeRoomId] forKey:kModelArchiveListEhomeRoomId];
+    [mutableDict setValue:self.ehomeRoomId forKey:kModelArchiveListEhomeRoomId];
     [mutableDict setValue:[NSNumber numberWithDouble:self.ehomeAreaId] forKey:kModelArchiveListEhomeAreaId];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];

@@ -305,6 +305,7 @@ failure:(void (^)(NSString * errorStr, id mark))failure;
  新增
  */
 +(void)requestAddArchiveWithEstateid:(double)estateId
+areaCode:(NSString *)areaCode
                            cellPhone:(NSString *)cellPhone
                         buildingName:(NSString *)buildingName
                             unitName:(NSString *)unitName

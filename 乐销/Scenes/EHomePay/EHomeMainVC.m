@@ -156,7 +156,7 @@
                 ModelEhomeHomeItem * item = ary.firstObject;
                 [GlobalData sharedInstance].modelEHomeArchive = ^(){
                     ModelArchiveList * archive = [ModelArchiveList new];
-                    archive.ehomeRoomId = item.roomId.doubleValue;
+                    archive.ehomeRoomId = NSNumber.str(item.roomId);
                     archive.ehomeAreaId = item.areaId.doubleValue;
                     archive.tag = 3;
                     archive.iDProperty = item.iDProperty.doubleValue;
@@ -192,7 +192,7 @@
 }
 
 - (void)requestNewsList{
-    [RequestApi requestEHomeNoticeListWithroomId:@"945220116612780032" areaId:@"945204103984840704" page:1 pageSize:20 delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestEHomeNoticeListWithroomId:[GlobalData sharedInstance].modelEHomeArchive.ehomeRoomId.stringValue areaId:NSNumber.dou([GlobalData sharedInstance].modelEHomeArchive.ehomeAreaId).stringValue page:1 pageSize:20 delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         NSArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelNews"];
         [self.autoNewsView resetWithAry:[ary fetchValues:@"title"]];
         
@@ -203,7 +203,7 @@
 }
 
 - (void)requestWuyeInfo{
-    [RequestApi requestEHomeWuyeInfoWithareaId:@"1319037237572272128" delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestEHomeWuyeInfoWithareaId:NSNumber.dou([GlobalData sharedInstance].modelEHomeArchive.ehomeAreaId).stringValue delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         ModelEHomeWuYeInfo * model = [ModelEHomeWuYeInfo modelObjectWithDictionary:response];
         [self.companyView resetViewWithModel:model];
         [self reconfigView];
@@ -213,7 +213,7 @@
 }
 
 - (void)requestWaitPayInfo{
-    [RequestApi requestEHomeWaitPayListWithtelephone:@"13854851931" roomId:@"1319038067000082432" delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestEHomeWaitPayListWithtelephone:[GlobalData sharedInstance].GB_UserModel.phone roomId:NSNumber.dou([GlobalData sharedInstance].modelEHomeArchive.ehomeAreaId).stringValue delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         NSArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelEHomeWaitPayList"];
         [self.orderView resetViewWithModel:ary];
         

@@ -25,6 +25,7 @@
 @property (nonatomic, strong) NSString *telephone;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *typeShow;
+@property (nonatomic, strong) NSString *areaCode;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

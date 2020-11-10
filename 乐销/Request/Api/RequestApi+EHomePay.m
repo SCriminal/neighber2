@@ -180,4 +180,12 @@
     };
     [self postUrl:@"/resident/ehome/1_3_6/sm2" delegate:delegate parameters:dic success:success failure:failure];
 }
++(void)requestEHomeAreaID:(NSString *)areaCode
+                      delegate:(id <RequestDelegate>)delegate
+                       success:(void (^)(NSDictionary * response, id mark))success
+                       failure:(void (^)(NSString * errorStr, id mark))failure{
+    NSDictionary *dic = @{@"code":RequestStrKey(areaCode),
+    };
+    [self requestEHomeSwitchWithDic:dic trxCde:@"EM0025" apiUrl:@"/ehome/mobile/getAreaIdByAreaCode.do" delegate:delegate success:success failure:failure];
+}
 @end

@@ -158,6 +158,8 @@
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     for (id model in self) {
          if([model respondsToSelector:NSSelectorFromString(keyPath)]&&[model valueForKeyPath:keyPath]) {
+//             NSNumber * num = [model valueForKeyPath:keyPath];
+//             NSLog(@"%@",num);
             [dic setObject:model forKey:[model valueForKeyPath:keyPath]];
         }
     }

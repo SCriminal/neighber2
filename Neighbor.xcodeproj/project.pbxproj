@@ -249,6 +249,7 @@
 		D28E77EE2418C170006383AA /* MerchantSigninView.m in Sources */ = {isa = PBXBuildFile; fileRef = D28E77ED2418C170006383AA /* MerchantSigninView.m */; };
 		D28E77F12418D7B0006383AA /* ProductDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = D28E77F02418D7B0006383AA /* ProductDetailView.m */; };
 		D28E77F42418FBB5006383AA /* LoginBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = D28E77F32418FBB5006383AA /* LoginBottomView.m */; };
+		D28F1876255915BC0020BF65 /* EhomeBindAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = D28F1875255915BC0020BF65 /* EhomeBindAlertView.m */; };
 		D290DB28226EF586004B18B4 /* ShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = D290DB27226EF586004B18B4 /* ShareView.m */; };
 		D290DB2C226F01F0004B18B4 /* HotLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = D290DB2B226F01F0004B18B4 /* HotLineView.m */; };
 		D291305C24171DAC00CAC2E4 /* IntegralRecordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D291305A24171DAC00CAC2E4 /* IntegralRecordVC.m */; };
@@ -1087,6 +1088,8 @@
 		D28E77F02418D7B0006383AA /* ProductDetailView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProductDetailView.m; sourceTree = "<group>"; };
 		D28E77F22418FBB5006383AA /* LoginBottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginBottomView.h; sourceTree = "<group>"; };
 		D28E77F32418FBB5006383AA /* LoginBottomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginBottomView.m; sourceTree = "<group>"; };
+		D28F1874255915BC0020BF65 /* EhomeBindAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EhomeBindAlertView.h; sourceTree = "<group>"; };
+		D28F1875255915BC0020BF65 /* EhomeBindAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EhomeBindAlertView.m; sourceTree = "<group>"; };
 		D29072CC1F20919B00726EBB /* MacroLocalKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MacroLocalKey.h; sourceTree = "<group>"; };
 		D290DB26226EF586004B18B4 /* ShareView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareView.h; sourceTree = "<group>"; };
 		D290DB27226EF586004B18B4 /* ShareView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareView.m; sourceTree = "<group>"; };
@@ -3633,6 +3636,8 @@
 				D2C9EC072520866E000D3E00 /* EHomeHomeListVC.m */,
 				D2C9EC92252368C4000D3E00 /* EHomeArchiveListVC.h */,
 				D2C9EC93252368C4000D3E00 /* EHomeArchiveListVC.m */,
+				D28F1874255915BC0020BF65 /* EhomeBindAlertView.h */,
+				D28F1875255915BC0020BF65 /* EhomeBindAlertView.m */,
 				D2C9EC9525236CFC000D3E00 /* EHomeArchiveDetailVC.h */,
 				D2C9EC9625236CFC000D3E00 /* EHomeArchiveDetailVC.m */,
 				D2C9EC9825246766000D3E00 /* EHomeWaitPayListVC.h */,
@@ -5151,6 +5156,7 @@
 				D22A01BB2435DFD6005F4236 /* HospitalListCell.m in Sources */,
 				D207A9CF244010B7000AC836 /* SelectArchiveAlertView.m in Sources */,
 				D2D26FFE250E0C91006C3008 /* FJTrainVC.m in Sources */,
+				D28F1876255915BC0020BF65 /* EhomeBindAlertView.m in Sources */,
 				D277836224FE2F99002F7242 /* FindJobDetailView.m in Sources */,
 				D234EEFC241F264800D8D1AB /* ModelMerchantDetail.m in Sources */,
 				D242504424132EA50055AC42 /* ShoppingVC.m in Sources */,
