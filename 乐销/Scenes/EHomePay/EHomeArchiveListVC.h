@@ -24,6 +24,7 @@
 
 @end
 
+
 @interface EHomeArchiveItemCell : UITableViewCell
 
 @property (strong, nonatomic) UIImageView *iconLogo;

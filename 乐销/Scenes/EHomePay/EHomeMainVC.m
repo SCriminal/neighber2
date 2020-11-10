@@ -144,38 +144,41 @@
 
 - (void)requestArchive{
     if ([GlobalData sharedInstance].modelEHomeArchive.iDProperty) {
-        [self.topView resetViewWithModel:[GlobalData sharedInstance].modelEHomeArchive];
-        [self reconfigView];
-        [self requestNewsList];
-        [self requestWuyeInfo];
-        [self requestWaitPayInfo];
+        if ([GlobalData sharedInstance].modelEHomeArchive.ehomeAreaId) {
+            [self.topView resetViewWithModel:[GlobalData sharedInstance].modelEHomeArchive];
+            [self reconfigView];
+            [self requestNewsList];
+            [self requestWuyeInfo];
+            [self requestWaitPayInfo];
+        }else{
+            [RequestApi requestEHomeBindHomeList:[GlobalData sharedInstance].GB_UserModel.phone delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                NSArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelEhomeHomeItem"];
+                for (ModelEhomeHomeItem *item in ary) {
+                    if ([item.roomId isEqualToString:[GlobalData sharedInstance].modelEHomeArchive.ehomeRoomId.stringValue]) {
+                        [GlobalData sharedInstance].modelEHomeArchive.ehomeAreaId = item.areaId;
+                        [self requestArchive];
+                        break;
+                    }
+                }
+            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                
+            }];
+        }
+        
     }else{
-        [RequestApi requestEHomeBindHomeList:[GlobalData sharedInstance].GB_UserModel.phone delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-            NSArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelEhomeHomeItem"];
-            if (ary.count) {
-                ModelEhomeHomeItem * item = ary.firstObject;
-                [GlobalData sharedInstance].modelEHomeArchive = ^(){
-                    ModelArchiveList * archive = [ModelArchiveList new];
-                    archive.ehomeRoomId = NSNumber.str(item.roomId);
-                    archive.ehomeAreaId = item.areaId.doubleValue;
-                    archive.tag = 3;
-                    archive.iDProperty = item.iDProperty.doubleValue;
-                    archive.estateName = item.areaName;
-                    archive.buildingName = item.floorName;
-                    archive.roomName = item.roomNo;
-                    return archive;
-                }();
-                [self requestArchive];
+        
+        [RequestApi requestArchiveListWithPage:1 count:2000 estateId:0 delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+            NSArray * ary =[GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelArchiveList"];
+            for (ModelArchiveList *item in ary) {
+                if (item.ehomeRoomId.doubleValue) {
+                    [GlobalData sharedInstance].modelEHomeArchive = item;
+                    [self requestArchive];
+                    break;
+                }
             }
         } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
             
         }];
-//        [RequestApi requestArchiveListWithPage:1 count:2000 estateId:0 delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-//            [self.topView resetViewWithModel:[GlobalData sharedInstance].modelEHomeArchive];
-//            [self reconfigView];
-//        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-//
-//        }];
     }
 }
 - (void)requestModule{
@@ -192,7 +195,7 @@
 }
 
 - (void)requestNewsList{
-    [RequestApi requestEHomeNoticeListWithroomId:[GlobalData sharedInstance].modelEHomeArchive.ehomeRoomId.stringValue areaId:NSNumber.dou([GlobalData sharedInstance].modelEHomeArchive.ehomeAreaId).stringValue page:1 pageSize:20 delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestEHomeNoticeListWithroomId:[GlobalData sharedInstance].modelEHomeArchive.ehomeRoomId.stringValue areaId:[GlobalData sharedInstance].modelEHomeArchive.ehomeAreaId page:1 pageSize:20 delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         NSArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelNews"];
         [self.autoNewsView resetWithAry:[ary fetchValues:@"title"]];
         
@@ -203,7 +206,7 @@
 }
 
 - (void)requestWuyeInfo{
-    [RequestApi requestEHomeWuyeInfoWithareaId:NSNumber.dou([GlobalData sharedInstance].modelEHomeArchive.ehomeAreaId).stringValue delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestEHomeWuyeInfoWithareaId:[GlobalData sharedInstance].modelEHomeArchive.ehomeAreaId delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         ModelEHomeWuYeInfo * model = [ModelEHomeWuYeInfo modelObjectWithDictionary:response];
         [self.companyView resetViewWithModel:model];
         [self reconfigView];
@@ -213,14 +216,25 @@
 }
 
 - (void)requestWaitPayInfo{
-    [RequestApi requestEHomeWaitPayListWithtelephone:[GlobalData sharedInstance].GB_UserModel.phone roomId:NSNumber.dou([GlobalData sharedInstance].modelEHomeArchive.ehomeAreaId).stringValue delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        NSArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelEHomeWaitPayList"];
-        [self.orderView resetViewWithModel:ary];
-        
-        [self reconfigView];
-    } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-        
-    }];
+    
+    [GlobalData sharedInstance].modelEHomeArchive.ehomeAreaId = @"1319118313086910464";
+    if (isStr([GlobalData sharedInstance].modelEHomeArchive.ehomeAreaId)) {
+        [RequestApi requestEHomeWaitPayListWithtelephone:[GlobalData sharedInstance].GB_UserModel.phone roomId:[GlobalData sharedInstance].modelEHomeArchive.ehomeAreaId delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+            NSArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelEHomeWaitPayList"];
+            [self.orderView resetViewWithModel:ary];
+            
+            [self reconfigView];
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+    }else{
+        [RequestApi requestEHomeAreaID:@"" delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+            
+        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+            
+        }];
+    }
+    
     
     
 }

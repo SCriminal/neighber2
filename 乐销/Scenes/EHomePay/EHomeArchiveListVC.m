@@ -22,34 +22,35 @@
 @property (nonatomic, strong) NSMutableArray *aryEhomeData;
 @property (nonatomic, strong) UIView *section1;
 @property (nonatomic, strong) ModelAuthentication *modelIdNumber;
+@property (nonatomic, strong) UIView *emptyView;
 
 @end
 
 @implementation EHomeArchiveListVC
-#pragma mark noresult view
-@synthesize noResultView = _noResultView;
-- (BOOL)isShowNoResult{
-    return true;
-}
-- (NoResultView *)noResultView{
-    if (!_noResultView) {
-        _noResultView = [NoResultView new];
-        [_noResultView resetWithImageName:@"empty_archive" title:@"暂无档案信息"];
-    }
-    return _noResultView;
-}
-- (void)showNoResult{
-    [self.noResultLoadingView removeFromSuperview];
-    [self.noResultView removeFromSuperview];
-    
-    if(!self.isShowNoResult)return;
-    if (self.aryDatas.count == 0 && self.aryEhomeData.count == 0 ) {
-        CGFloat top = 0;
-        if (self.tableView.tableHeaderView != nil) {
-            top = self.tableView.tableHeaderView.height;
+
+- (UIView *)emptyView{
+    if (!_emptyView) {
+        _emptyView = [UIView new];
+        _emptyView.backgroundColor = [UIColor whiteColor];
+        {
+           UIImageView * _iconLogo = [UIImageView new];
+                 _iconLogo.image = [UIImage imageNamed:@"EHome_lessee"];
+                 _iconLogo.widthHeight = XY(W(50),W(50));
+            _iconLogo.leftTop = XY(W(15), W(20));
+            [_emptyView addSubview:_iconLogo];
+            UILabel * l = [UILabel new];
+            l.font = [UIFont systemFontOfSize:F(15) weight:UIFontWeightMedium];
+            l.textColor = COLOR_333;
+            l.backgroundColor = [UIColor clearColor];
+            l.numberOfLines = 0;
+            l.lineSpace = W(0);
+            [l fitTitle:@"暂无房屋建档信息" variable:SCREEN_WIDTH - W(30)];
+            l.leftCenterY = XY(_iconLogo.right + W(10), _iconLogo.centerY);
+            [_emptyView addSubview:l];
         }
-        [self.noResultView showInView:self.tableView frame:CGRectMake(0, top, self.tableView.width, self.tableView.height)];
+        _emptyView.widthHeight = XY(SCREEN_WIDTH, W(90));
     }
+    return _emptyView;
 }
 - (YellowButton *)btnBottom{
     if (!_btnBottom) {
@@ -147,12 +148,22 @@
 }
 //table header
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if (section == 0) {
+        if (self.aryDatas.count == 0) {
+            return self.emptyView;
+        }
+    }
     if (section == 1) {
         return self.section1;
     }
     return  nil;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if (section == 0) {
+           if (self.aryDatas.count == 0) {
+               return self.emptyView.height;
+           }
+       }
     if (section == 1) {
         return self.section1.height;
     }
@@ -215,11 +226,16 @@
     [self.view addSubview:view];
     WEAKSELF
     view.blockConfirmClick = ^(ModelEhomeHomeItem *model) {
-        [RequestApi requestAddArchiveWithEstateid:0 areaCode:model.areaCode cellPhone:[GlobalData sharedInstance].GB_UserModel.phone buildingName:model.floorName unitName:model.unitNo roomName:model.roomNo tag:1 lng:nil lat:nil job:nil enterprise:nil isPart:0 scope:nil realName:self.modelIdNumber.realName idNumber:self.modelIdNumber.idNumber ehomeRoomId:model.roomId.doubleValue delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-            [weakSelf refreshHeaderAll];
-        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-            
-        }];
+        if (isStr(model.areaCode)) {
+            [RequestApi requestAddArchiveWithEstateid:0 areaCode:model.areaCode cellPhone:[GlobalData sharedInstance].GB_UserModel.phone buildingName:model.floorName unitName:model.unitNo roomName:model.roomNo tag:1 lng:nil lat:nil job:nil enterprise:nil isPart:0 scope:nil realName:self.modelIdNumber.realName idNumber:self.modelIdNumber.idNumber ehomeRoomId:model.roomId.doubleValue delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                [weakSelf refreshHeaderAll];
+            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                
+            }];
+        }else{
+            [GlobalMethod showAlert:@"暂无小区数据"];
+        }
+        
     };
 }
 - (void)requestCertify:(ModelEhomeHomeItem *)model{
