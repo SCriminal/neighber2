@@ -287,6 +287,7 @@
     }
     return _iconLogo;
 }
+
 - (UIImageView *)iconSelected{
     if (_iconSelected == nil) {
         _iconSelected = [UIImageView new];
@@ -295,6 +296,20 @@
         _iconSelected.widthHeight = XY(W(19),W(19));
     }
     return _iconSelected;
+}
+- (UILabel *)bind{
+    if (!_bind) {
+        _bind = [UILabel new];
+        _bind.textColor = [UIColor whiteColor];
+        _bind.font =  [UIFont systemFontOfSize:F(11) weight:UIFontWeightMedium];
+        _bind.textAlignment = NSTextAlignmentCenter;
+        _bind.backgroundColor = COLOR_ORANGE;
+        _bind.widthHeight = XY(W(60), W(18));
+        _bind.text = @"关联物业";
+        [_bind addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:2 lineWidth:0 lineColor:[UIColor clearColor]];
+
+    }
+    return _bind;
 }
 - (UILabel *)name{
     if (_name == nil) {
@@ -324,6 +339,8 @@
         [self.contentView addSubview:self.iconSelected];
         [self.contentView addSubview:self.name];
         [self.contentView addSubview:self.address];
+        [self.contentView addSubview:self.bind];
+
         
     }
     return self;
@@ -347,6 +364,8 @@
     [self.address fitTitle:[NSString stringWithFormat:@"%@ %@号楼 %@单元 %@",UnPackStr(modelArchive.estateName),UnPackStr(modelArchive.buildingName),UnPackStr(modelArchive.unitName),UnPackStr(modelArchive.roomName)] variable:W(230)];
     self.address.leftBottom = XY(self.iconLogo.right + W(10),self.iconLogo.bottom-W(3.5));
     
+    self.bind.leftCenterY = XY(self.name.right + W(5), self.name.centerY);
+    self.bind.hidden = !isStr(modelArchive.ehomeRoomId);
     //设置总高度
     self.height = self.iconLogo.bottom + W(15);
 }

@@ -6095,8 +6095,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/EHomePay/EHomeArchiveListVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "338"
-            endingLineNumber = "338"
+            startingLineNumber = "355"
+            endingLineNumber = "355"
             landmarkName = "-resetCellWithModel:"
             landmarkType = "7">
          </BreakpointContent>

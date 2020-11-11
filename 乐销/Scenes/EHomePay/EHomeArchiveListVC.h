@@ -18,6 +18,7 @@
 @property (strong, nonatomic) UIImageView *iconSelected;
 @property (strong, nonatomic) UILabel *name;
 @property (strong, nonatomic) UILabel *address;
+@property (strong, nonatomic) UILabel *bind;
 
 #pragma mark 刷新cell
 - (void)resetCellWithModel:(id)model;
