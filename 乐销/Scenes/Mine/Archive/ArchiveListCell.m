@@ -117,6 +117,7 @@
     
     [self.contentView addLineFrame:CGRectMake(W(15), self.height - 1, SCREEN_WIDTH - W(30), 1)];
 
+    self.btnEdit.hidden = model.ehomeRoomId.doubleValue;
 
 }
 

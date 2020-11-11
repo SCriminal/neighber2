@@ -120,24 +120,23 @@ NSString *const kModelArchiveListEhomeAreaId = @"ehomeAreaId";
             self.cityName = [dict stringValueForKey:kModelArchiveListCityName];
             self.estateName = [dict stringValueForKey:kModelArchiveListEstateName];
             self.isParty = [dict doubleValueForKey:kModelArchiveListIsParty];
-        self.ehomeRoomId = [dict numberValueForKey:kModelArchiveListEhomeRoomId];
+        self.ehomeRoomId = [dict stringValueForKey:kModelArchiveListEhomeRoomId];
         self.ehomeAreaId = [dict stringValueForKey:kModelArchiveListEhomeAreaId];
 
         switch ((int)self.tag) {
-            case 1:
-                self.typeShow = @"业主";
-                break;
-            case 2:
-                self.typeShow = @"亲友";
-                break;
-            case 3:
-                self.typeShow = @"租户";
-                break;
-            default:
-                break;
-        }
+                       case 1:
+                           self.typeShow = @"业主";
+                           break;
+                       case 2:
+                           self.typeShow = @"亲友";
+                           break;
+                       case 3:
+                           self.typeShow = @"租户";
+                           break;
+                       default:
+                           break;
+                   }
     }
-    
     return self;
     
 }

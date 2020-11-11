@@ -276,7 +276,7 @@
 }
 #pragma mark request
 - (void)requestList{
-    [RequestApi requestEHomePayHistoryList:@"17685571713" roomId:@"945220116612780032" itemType:self.modelFeeType.identifier payType:self.modelPayType.identifier startTime:[GlobalMethod exchangeDate:self.dateStart formatter:@"yyyyMMdd"] endTime:[GlobalMethod exchangeDate:self.dateEnd formatter:@"yyyyMMdd"] page:NSNumber.dou(self.pageNum).stringValue pageSize:@"20" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestEHomePayHistoryList:[GlobalData sharedInstance].GB_UserModel.phone roomId:[GlobalData sharedInstance].modelEHomeArchive.ehomeRoomId itemType:self.modelFeeType.identifier payType:self.modelPayType.identifier startTime:[GlobalMethod exchangeDate:self.dateStart formatter:@"yyyyMMdd"] endTime:[GlobalMethod exchangeDate:self.dateEnd formatter:@"yyyyMMdd"] page:NSNumber.dou(self.pageNum).stringValue pageSize:@"20" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         self.pageNum ++;
         NSMutableArray  * aryRequest = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelEHomePayHistoryItem"];
         if (self.isRemoveAll) {

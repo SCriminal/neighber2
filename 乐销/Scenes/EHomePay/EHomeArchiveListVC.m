@@ -33,9 +33,9 @@
         _emptyView = [UIView new];
         _emptyView.backgroundColor = [UIColor whiteColor];
         {
-           UIImageView * _iconLogo = [UIImageView new];
-                 _iconLogo.image = [UIImage imageNamed:@"EHome_lessee"];
-                 _iconLogo.widthHeight = XY(W(50),W(50));
+            UIImageView * _iconLogo = [UIImageView new];
+            _iconLogo.image = [UIImage imageNamed:@"EHome_lessee"];
+            _iconLogo.widthHeight = XY(W(50),W(50));
             _iconLogo.leftTop = XY(W(15), W(20));
             [_emptyView addSubview:_iconLogo];
             UILabel * l = [UILabel new];
@@ -160,10 +160,10 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if (section == 0) {
-           if (self.aryDatas.count == 0) {
-               return self.emptyView.height;
-           }
-       }
+        if (self.aryDatas.count == 0) {
+            return self.emptyView.height;
+        }
+    }
     if (section == 1) {
         return self.section1.height;
     }
@@ -202,9 +202,9 @@
                             break;
                         }
                     }
-//                    if (!isEqual) {
-                        [self.aryEhomeData addObject:item];
-//                    }
+                    //                    if (!isEqual) {
+                    [self.aryEhomeData addObject:item];
+                    //                    }
                 }
             }
             [self.tableView reloadData];
@@ -227,13 +227,18 @@
     WEAKSELF
     view.blockConfirmClick = ^(ModelEhomeHomeItem *model) {
         if (isStr(model.areaCode)) {
-            [RequestApi requestAddArchiveWithEstateid:0 areaCode:model.areaCode cellPhone:[GlobalData sharedInstance].GB_UserModel.phone buildingName:model.floorName unitName:model.unitNo roomName:model.roomNo tag:1 lng:nil lat:nil job:nil enterprise:nil isPart:0 scope:nil realName:self.modelIdNumber.realName idNumber:self.modelIdNumber.idNumber ehomeRoomId:model.roomId.doubleValue delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+            [RequestApi requestAddArchiveWithEstateid:0 areaCode:model.areaCode cellPhone:[GlobalData sharedInstance].GB_UserModel.phone buildingName:model.floorName unitName:model.unitNo roomName:model.roomNo tag:1 lng:nil lat:nil job:nil enterprise:nil isPart:0 scope:nil realName:self.modelIdNumber.realName idNumber:self.modelIdNumber.idNumber ehomeRoomId:model.roomId delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
                 [weakSelf refreshHeaderAll];
             } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
                 
             }];
         }else{
             [GlobalMethod showAlert:@"暂无小区数据"];
+            [RequestApi requestAddArchiveWithEstateid:0 areaCode:@"200224" cellPhone:[GlobalData sharedInstance].GB_UserModel.phone buildingName:model.floorName unitName:model.unitNo roomName:model.roomNo tag:1 lng:nil lat:nil job:nil enterprise:nil isPart:0 scope:nil realName:self.modelIdNumber.realName idNumber:self.modelIdNumber.idNumber ehomeRoomId:model.roomId delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                [weakSelf refreshHeaderAll];
+            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                
+            }];
         }
         
     };

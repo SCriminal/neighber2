@@ -570,7 +570,7 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
                                scope:(NSString *)scope
                             realName:(NSString *)realName
                             idNumber:(NSString *)idNumber
-                         ehomeRoomId:(double)ehomeRoomId
+                         ehomeRoomId:(NSString *)ehomeRoomId
                             delegate:(id <RequestDelegate>)delegate
                              success:(void (^)(NSDictionary * response, id mark))success
                              failure:(void (^)(NSString * errorStr, id mark))failure{
@@ -589,7 +589,7 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
                           @"enterprise":RequestStrKey(enterprise),
                           @"isParty":NSNumber.dou(isPart),
                           @"scope":NSNumber.dou(4),
-                          @"ehomeRoomId":NSNumber.dou(ehomeRoomId)
+                          @"ehomeRoomId":RequestStrKey(ehomeRoomId)
                           
     };
     if (isStr(areaCode)) {

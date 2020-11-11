@@ -88,13 +88,19 @@
     return [ArchiveListCell fetchHeight:self.aryDatas[indexPath.row]];
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    CreateArchiveVC * vc = [CreateArchiveVC new];
-    WEAKSELF
-    vc.model = self.aryDatas[indexPath.row];
-    vc.blockBack = ^(UIViewController *vc) {
-        [weakSelf refreshHeaderAll];
-    };
-    [GB_Nav pushViewController:vc animated:true];
+    ModelArchiveList * item = self.aryDatas[indexPath.row];
+    if (item.ehomeRoomId.doubleValue) {
+        
+    }else{
+        CreateArchiveVC * vc = [CreateArchiveVC new];
+           WEAKSELF
+           vc.model = item;
+           vc.blockBack = ^(UIViewController *vc) {
+               [weakSelf refreshHeaderAll];
+           };
+           [GB_Nav pushViewController:vc animated:true];
+    }
+   
 
 }
 

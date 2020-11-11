@@ -48,7 +48,8 @@
     //auto sc
     
     CGFloat top = W(25);
-    
+    ModelArchiveList *modelArchive = [GlobalData sharedInstance].modelEHomeArchive;
+
     NSArray * ary = @[^(){
         ModelBaseData * modelItem = [ModelBaseData new];
         modelItem.string = @"缴费项目";
@@ -57,12 +58,13 @@
     }(),^(){
         ModelBaseData * modelItem = [ModelBaseData new];
         modelItem.string = @"业主姓名";
-        modelItem.subString = @"物业费";
+        modelItem.subString = modelArchive.realName;
         return modelItem;
     }(),^(){
         ModelBaseData * modelItem = [ModelBaseData new];
         modelItem.string = @"缴费房屋";
-        modelItem.subString = @"物业费";
+        modelItem.subString = [NSString stringWithFormat:@"%@%@号楼%@单元%@",UnPackStr(modelArchive.estateName),UnPackStr(modelArchive.buildingName),UnPackStr(modelArchive.unitName),UnPackStr(modelArchive.roomName)];
+
         return modelItem;
     }()];
     for (int i = 0; i<ary.count; i++) {

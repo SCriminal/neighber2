@@ -319,7 +319,7 @@ areaCode:(NSString *)areaCode
                                scope:(NSString *)scope
                             realName:(NSString *)realName
                             idNumber:(NSString *)idNumber
-ehomeRoomId:(double)ehomeRoomId
+ehomeRoomId:(NSString *)ehomeRoomId
                             delegate:(id <RequestDelegate>)delegate
                              success:(void (^)(NSDictionary * response, id mark))success
                              failure:(void (^)(NSString * errorStr, id mark))failure;

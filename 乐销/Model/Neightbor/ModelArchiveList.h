@@ -42,7 +42,7 @@
 @property (nonatomic, strong) NSString *estateName;
 @property (nonatomic, assign) double isParty;
 @property (nonatomic, strong) NSString *typeShow;
-@property (nonatomic, strong) NSNumber * ehomeRoomId;
+@property (nonatomic, strong) NSString * ehomeRoomId;
 @property (nonatomic, strong) NSString * ehomeAreaId;
 
 

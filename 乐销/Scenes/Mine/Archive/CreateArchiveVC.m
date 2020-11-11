@@ -262,7 +262,7 @@
     [RequestApi requestAddArchiveWithEstateid:[GlobalData sharedInstance].community.iDProperty areaCode:nil  cellPhone:self.modelPhone.subString buildingName:self.modelBuilding.subString unitName:self.modelUnit.subString roomName:self.modelHouse.subString tag:self.footer.selectIdentityView.index+1  lng:[NSString stringWithFormat:@"%lf",modelAddress.lng] lat:[NSString stringWithFormat:@"%lf",modelAddress.lat] job:self.modelProfession.subString enterprise:self.modelCompany.subString isPart:self.footer.selectRepublicView.index scope:nil
                                      realName:self.modelName.subString
                                      idNumber:self.modelIdentity.subString
-                                  ehomeRoomId:0
+                                  ehomeRoomId:nil
                                      delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         [GlobalMethod showAlert:@"添加成功"];
         [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_ARCHIVE_CREATE object:nil];

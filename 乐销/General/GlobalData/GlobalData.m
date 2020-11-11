@@ -81,6 +81,8 @@ SYNTHESIZE_SINGLETONE_FOR_CLASS(GlobalData);
 - (void)setModelEHomeArchive:(ModelArchiveList *)modelEHomeArchive{
     [GlobalMethod writeModel:modelEHomeArchive key:LOCAL_EHOMEARCHIVE];
     _modelEHomeArchive = modelEHomeArchive;
+    [[NSNotificationCenter defaultCenter]postNotificationName:NOTICE_EHOME_ARCHIVE_REFERSH object:nil];
+
 }
 
 - (ModelHaiLuo *)modelEHome{

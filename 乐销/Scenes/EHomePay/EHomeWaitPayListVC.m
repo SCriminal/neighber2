@@ -75,7 +75,8 @@
 #pragma mark 添加导航栏
 - (void)addNav{
     [self.view addSubview:[BaseNavView initNavBackTitle:@"待付账单" rightTitle:@"历史查询" rightBlock:^{
-        
+        [GB_Nav pushVCName:@"EHomePayHistoryListVC" animated:true];
+
     }]];
 }
 
@@ -103,8 +104,7 @@
 
 #pragma mark request
 - (void)requestList{
-    [GlobalData sharedInstance].modelEHome.token = @"543999308e9d4ddfb28e63fd4e1669d58bb7";
-    [RequestApi requestEHomeWaitPayListWithtelephone:@"13854851931" roomId:@"1319038067000082432" delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestEHomeWaitPayListWithtelephone:[GlobalData sharedInstance].GB_UserModel.phone roomId:[GlobalData sharedInstance].modelEHomeArchive.ehomeRoomId delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         //        ModelEhomeWaitPayInfo * model = [ModelEhomeWaitPayInfo modelObjectWithDictionary:response];
         self.aryDatas = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelEHomeWaitPayList"];
         [self.bottomView resetViewWithModel:self.aryDatas];

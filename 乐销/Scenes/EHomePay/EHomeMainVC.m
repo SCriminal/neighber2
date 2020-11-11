@@ -87,6 +87,8 @@
     //添加导航栏
     self.tableView.top = 0;
     self.tableView.height = SCREEN_HEIGHT;
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshHeaderAll) name:NOTICE_EHOME_ARCHIVE_REFERSH object:nil];
+    
     //table
     //    [self.tableView registerClass:[<#CellName#> class] forCellReuseIdentifier:@"<#CellName#>"];
     //request
@@ -144,24 +146,26 @@
 
 - (void)requestArchive{
     if ([GlobalData sharedInstance].modelEHomeArchive.iDProperty) {
-        if ([GlobalData sharedInstance].modelEHomeArchive.ehomeAreaId) {
+        if (isStr([GlobalData sharedInstance].modelEHomeArchive.ehomeAreaId)) {
             [self.topView resetViewWithModel:[GlobalData sharedInstance].modelEHomeArchive];
             [self reconfigView];
             [self requestNewsList];
             [self requestWuyeInfo];
             [self requestWaitPayInfo];
         }else{
+//            [GlobalData sharedInstance].modelEHomeArchive.ehomeAreaId = @"1319070981750390784";
+//            [self requestArchive];
             [RequestApi requestEHomeBindHomeList:[GlobalData sharedInstance].GB_UserModel.phone delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
                 NSArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelEhomeHomeItem"];
                 for (ModelEhomeHomeItem *item in ary) {
-                    if ([item.roomId isEqualToString:[GlobalData sharedInstance].modelEHomeArchive.ehomeRoomId.stringValue]) {
+                    if ([item.roomId isEqualToString:[GlobalData sharedInstance].modelEHomeArchive.ehomeRoomId]) {
                         [GlobalData sharedInstance].modelEHomeArchive.ehomeAreaId = item.areaId;
                         [self requestArchive];
                         break;
                     }
                 }
             } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-                
+
             }];
         }
         
@@ -195,7 +199,7 @@
 }
 
 - (void)requestNewsList{
-    [RequestApi requestEHomeNoticeListWithroomId:[GlobalData sharedInstance].modelEHomeArchive.ehomeRoomId.stringValue areaId:[GlobalData sharedInstance].modelEHomeArchive.ehomeAreaId page:1 pageSize:20 delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestEHomeNoticeListWithroomId:[GlobalData sharedInstance].modelEHomeArchive.ehomeRoomId areaId:[GlobalData sharedInstance].modelEHomeArchive.ehomeAreaId page:1 pageSize:20 delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         NSArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelNews"];
         [self.autoNewsView resetWithAry:[ary fetchValues:@"title"]];
         
@@ -216,10 +220,9 @@
 }
 
 - (void)requestWaitPayInfo{
-    
-    [GlobalData sharedInstance].modelEHomeArchive.ehomeAreaId = @"1319118313086910464";
+    NSLog(@"%@",[GlobalData sharedInstance].modelEHomeArchive.ehomeAreaId);
     if (isStr([GlobalData sharedInstance].modelEHomeArchive.ehomeAreaId)) {
-        [RequestApi requestEHomeWaitPayListWithtelephone:[GlobalData sharedInstance].GB_UserModel.phone roomId:[GlobalData sharedInstance].modelEHomeArchive.ehomeAreaId delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+        [RequestApi requestEHomeWaitPayListWithtelephone:[GlobalData sharedInstance].GB_UserModel.phone roomId:[GlobalData sharedInstance].modelEHomeArchive.ehomeRoomId delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
             NSArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelEHomeWaitPayList"];
             [self.orderView resetViewWithModel:ary];
             
@@ -228,11 +231,7 @@
             
         }];
     }else{
-        [RequestApi requestEHomeAreaID:@"" delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-            
-        } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-            
-        }];
+       
     }
     
     
