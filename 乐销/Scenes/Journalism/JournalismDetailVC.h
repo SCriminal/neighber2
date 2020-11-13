@@ -10,5 +10,6 @@
 
 @interface JournalismDetailVC : BaseVC
 @property (nonatomic, strong) ModelNews *model;
+@property (nonatomic, strong) NSString *html;
 
 @end

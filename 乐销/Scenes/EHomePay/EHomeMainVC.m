@@ -39,8 +39,7 @@
         _autoNewsView = [FindJobNewsView new];
         [_autoNewsView timerStart];
         _autoNewsView.blockClick = ^(int index) {
-            //            FindJobNoticeListVC * vc = [FindJobNoticeListVC new];
-            //            [GB_Nav pushViewController:vc animated:true];
+            [GB_Nav pushVCName:@"EHomeNewsListVC" animated:true];
         };
     }
     return _autoNewsView;

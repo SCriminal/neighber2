@@ -250,6 +250,7 @@
 		D28E77F12418D7B0006383AA /* ProductDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = D28E77F02418D7B0006383AA /* ProductDetailView.m */; };
 		D28E77F42418FBB5006383AA /* LoginBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = D28E77F32418FBB5006383AA /* LoginBottomView.m */; };
 		D28F1876255915BC0020BF65 /* EhomeBindAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = D28F1875255915BC0020BF65 /* EhomeBindAlertView.m */; };
+		D28F1879255BDACF0020BF65 /* EHomeNewsListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D28F1878255BDACE0020BF65 /* EHomeNewsListVC.m */; };
 		D290DB28226EF586004B18B4 /* ShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = D290DB27226EF586004B18B4 /* ShareView.m */; };
 		D290DB2C226F01F0004B18B4 /* HotLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = D290DB2B226F01F0004B18B4 /* HotLineView.m */; };
 		D291305C24171DAC00CAC2E4 /* IntegralRecordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D291305A24171DAC00CAC2E4 /* IntegralRecordVC.m */; };
@@ -1090,6 +1091,8 @@
 		D28E77F32418FBB5006383AA /* LoginBottomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginBottomView.m; sourceTree = "<group>"; };
 		D28F1874255915BC0020BF65 /* EhomeBindAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EhomeBindAlertView.h; sourceTree = "<group>"; };
 		D28F1875255915BC0020BF65 /* EhomeBindAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EhomeBindAlertView.m; sourceTree = "<group>"; };
+		D28F1877255BDACE0020BF65 /* EHomeNewsListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EHomeNewsListVC.h; sourceTree = "<group>"; };
+		D28F1878255BDACE0020BF65 /* EHomeNewsListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EHomeNewsListVC.m; sourceTree = "<group>"; };
 		D29072CC1F20919B00726EBB /* MacroLocalKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MacroLocalKey.h; sourceTree = "<group>"; };
 		D290DB26226EF586004B18B4 /* ShareView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareView.h; sourceTree = "<group>"; };
 		D290DB27226EF586004B18B4 /* ShareView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareView.m; sourceTree = "<group>"; };
@@ -3632,6 +3635,8 @@
 			children = (
 				D2C9EC0325206CBE000D3E00 /* EHomeMainVC.h */,
 				D2C9EC0425206CBF000D3E00 /* EHomeMainVC.m */,
+				D28F1877255BDACE0020BF65 /* EHomeNewsListVC.h */,
+				D28F1878255BDACE0020BF65 /* EHomeNewsListVC.m */,
 				D2C9EC062520866E000D3E00 /* EHomeHomeListVC.h */,
 				D2C9EC072520866E000D3E00 /* EHomeHomeListVC.m */,
 				D2C9EC92252368C4000D3E00 /* EHomeArchiveListVC.h */,
@@ -5118,6 +5123,7 @@
 				D22A01D62435F015005F4236 /* HelpInfoListVC.m in Sources */,
 				D2257B3F24EA8D78001AF658 /* TestTableVC.m in Sources */,
 				D22BA9D01E5EB8CA00C5B391 /* FSCalendar+Deprecated.m in Sources */,
+				D28F1879255BDACF0020BF65 /* EHomeNewsListVC.m in Sources */,
 				D2D1E1DE2422065800ED5E0D /* WhistleDetailView.m in Sources */,
 				D242503024132E2F0055AC42 /* EditInfoVC.m in Sources */,
 				D2037631210721780054F8A6 /* ModelWXApiReq.m in Sources */,

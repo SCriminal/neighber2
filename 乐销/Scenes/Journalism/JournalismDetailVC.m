@@ -48,6 +48,10 @@
 }
 - (void)requestDetail{
     [self showLoadingView];
+    if (isStr(self.html)) {
+        [self.web loadHTMLString:self.html baseURL:nil];
+        return;
+    }
 #ifdef DEBUG
 //    NSString * strURL = [NSString stringWithFormat:@"http://192.168.20.172:8883/community/news/detail?id=%.f",self.model.iDProperty];
     NSString * strURL = [NSString stringWithFormat:@"https://wsq.hongjiafu.cn/community/news/detail?id=%.f",self.model.iDProperty];
