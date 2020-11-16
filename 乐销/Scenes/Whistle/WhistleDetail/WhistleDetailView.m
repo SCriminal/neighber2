@@ -255,30 +255,37 @@
     //    }
     //设置总高度
     CGFloat top = [self addDot:aryDatas top:self.progress.top +W(1)];
-    if (model.ary9UrlImages.count) {
+    CGFloat left = W(144);
+    CGFloat bottom = top;
+    for (int i = 0; i<model.ary9UrlImages.count; i++) {
+        ModelImage * url = model.ary9UrlImages[i];
         UIImageView * iv = [UIImageView new];
         iv.backgroundColor = [UIColor clearColor];
         iv.contentMode = UIViewContentModeScaleAspectFill;
         iv.clipsToBounds = true;
         iv.widthHeight = XY(W(50),W(50));
-        iv.leftTop = XY(W(144),top);
-        [iv sd_setImageWithModel:model.ary9UrlImages.firstObject placeholderImageName:IMAGE_BIG_DEFAULT];
+        iv.leftTop = XY(left,top);
+        [iv sd_setImageWithModel:url placeholderImageName:IMAGE_BIG_DEFAULT];
         [iv addTarget:self action:@selector(imageClick:)];
+        iv.tag =i;
         [self addSubview:iv];
-        top = iv.bottom + W(27);
+        bottom = iv.bottom + W(27);
+        left = iv.right + W(9);
     }
-    //设置总高度
-    self.height = top;
     
+    
+    //设置总高度
+    self.height = bottom;
 }
 - (void)imageClick:(UITapGestureRecognizer *)tap{
     UIImageView * iv = (UIImageView *)tap.view;
     if ([iv isKindOfClass:[UIImageView class]]) {
         ImageDetailBigView * detailView = [ImageDetailBigView new];
-        [detailView resetView:self.model.ary9UrlImages isEdit:false index: 0];
+        [detailView resetView:self.model.ary9UrlImages isEdit:false index: iv.tag];
         [detailView showInView:GB_Nav.lastVC.view imageViewShow:iv];
     }
 }
+
 - (CGFloat)addDot:(NSArray *)aryBtns top:(CGFloat)top{
     for (int i = 0; i<aryBtns.count; i++) {
         ModelBaseData * modelData = aryBtns[i];
