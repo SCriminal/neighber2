@@ -43,6 +43,9 @@ NSString *const kEHomePayWeichatInfoFee = @"fee";
             self.feesIds = [dict stringValueForKey:kEHomePayWeichatInfoFeesIds];
             self.payOrderNo = [dict stringValueForKey:kEHomePayWeichatInfoPayOrderNo];
             self.fee = [dict doubleValueForKey:kEHomePayWeichatInfoFee];
+        self.notifyUrl = [dict stringValueForKey:@"notifyUrl"];
+        self.orderTitle = [dict stringValueForKey:@"orderTitle"];
+        self.orderDesc = [dict stringValueForKey:@"orderDesc"];
 
     }
     
@@ -57,6 +60,9 @@ NSString *const kEHomePayWeichatInfoFee = @"fee";
     [mutableDict setValue:self.feesIds forKey:kEHomePayWeichatInfoFeesIds];
     [mutableDict setValue:self.payOrderNo forKey:kEHomePayWeichatInfoPayOrderNo];
     [mutableDict setValue:[NSNumber numberWithDouble:self.fee] forKey:kEHomePayWeichatInfoFee];
+    [mutableDict setValue:self.notifyUrl forKey:@"notifyUrl"];
+    [mutableDict setValue:self.orderTitle forKey:@"orderTitle"];
+    [mutableDict setValue:self.orderDesc forKey:@"orderDesc"];
 
     return [NSDictionary dictionaryWithDictionary:mutableDict];
 }

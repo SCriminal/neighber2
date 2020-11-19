@@ -58,11 +58,12 @@
     NSDictionary * requestHeader = @{
         @"opId": @"ebus_PYOrderDealApp",
         @"rqId": @"Z6",
+        @"ver": @"03",
+
     };
     NSDictionary * requestData = @{
         @"bkId" : @"802",
         @"orderIP" : @"60.208.131.66",
-        @"orderDesc" : @"海之宝鲜海带",
         @"branchId" : @"802202007210001",
         @"returnURL" : @"",
         @"notifyURL" : @"",
@@ -79,7 +80,10 @@
         @"transType" : @"JNLIFE",
         @"userName" : @"",
         @"orderTime" : @"20201013164816",
-        @"orderTitle" : @"海之宝鲜海带"    };
+        @"orderDesc" : @"海之宝鲜海带",
+        @"orderTitle" : @"海之宝鲜海带"
+        
+    };
     ISSPaySDK *paySDK = [ISSPaySDK payBankID:@"802" environmentMode:ISSBankSDKEnvironmentMode_ST scene:ISSBankSDKUseScenePay];
     [paySDK showPayAddedTo:self url:@"PYOrderDeal.do" channelID:@"B2" requestHeader:requestHeader requestData:requestData success:^{
         NSLog(@"%s", __func__);
@@ -95,11 +99,19 @@
     NSDictionary * requestHeader = @{
         @"opId": @"ebus_PYOrderDealApp",
         @"rqId": @"Z6",
+        @"ver": @"03",
+
     };
     NSDictionary * requestData = @{
         @"orderNo": model.payOrderNo,
         @"orderAmt": NSNumber.dou(model.fee).stringValue,
         @"oneMerchNo" : @"802200958120003",
+        @"notifyURL" : model.notifyUrl,
+        @"transType" : @"AP04",
+        @"orderDesc" : model.orderDesc,
+        @"orderTitle" : model.orderTitle,
+        @"orderTime" : [GlobalMethod exchangeDate:[NSDate date] formatter:@"yyyyMMddHHmmss"],
+
 //        @"epiKey":@"C9F983293AA603DC06832B3CB08BEA"
     };
     ISSPaySDK *paySDK = [ISSPaySDK payBankID:@"802" environmentMode:ISSBankSDKEnvironmentMode_ST scene:ISSBankSDKUseScenePay];

@@ -10,6 +10,7 @@
 #import "EHomeWaitPayView.h"
 #import "RequestApi+EHomePay.h"
 #import <ISSBankSDK/ISSBankSDK.h>
+#import "EHomePayHistoryListVC.h"
 
 @interface EHomePayOrderVC ()
 @property (nonatomic, strong) EHomeWaitPayBottomView *bottomView;
@@ -117,7 +118,7 @@
         view.height = W(88);
         view.centerXTop = XY(SCREEN_WIDTH/2.0, top - W(15));
         [view addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:10 lineWidth:1 lineColor:[UIColor colorWithHexString:@"#FBFBFB"]];
-        
+         
         [self.tableHeaderView addSubview:view];
         {
             UILabel * l = [UILabel new];
@@ -244,7 +245,7 @@
      [GlobalMethod exchangeDicToJson:ary]
      */
     
-    [RequestApi requestEHomePayWithtelephone:@"13854851931" feesIds:[NSString stringWithFormat:@"[%@]",[ary componentsJoinedByString:@","]] feeAmounts:NSNumber.dou(numAll).stringValue payType:@"1" transType:@"1" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestEHomePayWithtelephone:[GlobalData sharedInstance].GB_UserModel.phone feesIds:[NSString stringWithFormat:@"[%@]",[ary componentsJoinedByString:@","]] feeAmounts:NSNumber.dou(numAll).stringValue payType:@"1" transType:@"1" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         EHomePayWeichatInfo * model = [EHomePayWeichatInfo modelObjectWithDictionary:response];
         [self payWithModel:model];
         NSLog(@"aa");
@@ -257,22 +258,32 @@
     NSDictionary * requestHeader = @{
         @"opId": @"ebus_PYOrderDealApp",
         @"rqId": @"Z6",
+        @"ver": @"03",
     };
     NSDictionary * requestData = @{
         @"orderNo": model.payOrderNo,
-        @"orderAmt": NSNumber.dou(model.fee).stringValue
+        @"orderAmt": NSNumber.dou(model.fee).stringValue,
+        @"oneMerchNo" : @"802200958120003",
+        @"notifyURL" : model.notifyUrl,
+        @"currency" : @"CNY",
+        @"transType" : @"AP04",
+        @"orderDesc" : model.orderDesc,
+        @"orderTitle" : model.orderTitle,
+        @"orderTime" : [GlobalMethod exchangeDate:[NSDate date] formatter:@"yyyyMMddHHmmss"],
+
     };
     ISSPaySDK *paySDK = [ISSPaySDK payBankID:@"802" environmentMode:ISSBankSDKEnvironmentMode_ST scene:ISSBankSDKUseScenePay];
     [paySDK showPayAddedTo:self url:@"PYOrderDeal.do" channelID:@"B2" requestHeader:requestHeader requestData:requestData success:^{
-
         NSLog(@"%s", __func__);
-        
+        [GB_Nav popLastAndPushVC:[EHomePayHistoryListVC new]];
+        [GlobalMethod showAlert:@"支付成功"];
     } failure:^(NSString *message) {
-        
+        [GlobalMethod showAlert:@"支付失败"];
         NSLog(@"%s", __func__);
         
     } cancel:^(id result) {
         NSLog(@"%s", __func__);
+        [GlobalMethod showAlert:@"支付失败"];
 
     }];
     

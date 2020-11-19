@@ -16,6 +16,9 @@
 @property (nonatomic, strong) NSString *feesIds;
 @property (nonatomic, strong) NSString *payOrderNo;
 @property (nonatomic, assign) double fee;
+@property (nonatomic, strong) NSString *notifyUrl;
+@property (nonatomic, strong) NSString *orderTitle;
+@property (nonatomic, strong) NSString *orderDesc;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

@@ -5825,8 +5825,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "445"
             endingLineNumber = "445"
-            landmarkName = "EHomeCompanyView"
-            landmarkType = "3">
+            landmarkName = "-phoneClick"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -5951,8 +5951,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/EHomePay/EHomePayOrderVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "247"
-            endingLineNumber = "247"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
             landmarkName = "-requestPay"
             landmarkType = "7">
             <Locations>
@@ -6369,8 +6369,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "212"
             endingLineNumber = "212"
-            landmarkName = "EHomeMainVC"
-            landmarkType = "3">
+            landmarkName = "-requestWuyeInfo"
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "E68CE7B6-F764-4FA1-B472-7519C93C69B8 - 7df19db8e190d2f0"
@@ -6463,8 +6463,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Test/TestVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "-reqeustKey"
             landmarkType = "7">
          </BreakpointContent>
@@ -6479,8 +6479,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Test/TestVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
             landmarkName = "-reqeustKey"
             landmarkType = "7">
          </BreakpointContent>
@@ -6495,8 +6495,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Test/TestVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "-payWithMode2:"
             landmarkType = "7">
          </BreakpointContent>
@@ -6511,8 +6511,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Test/TestVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
             landmarkName = "-payWithMode2:"
             landmarkType = "7">
          </BreakpointContent>
@@ -6527,8 +6527,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Test/TestVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
             landmarkName = "-payWithMode2:"
             landmarkType = "7">
          </BreakpointContent>
@@ -6543,8 +6543,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Test/TestVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
             landmarkName = "-payWithMode2:"
             landmarkType = "7">
          </BreakpointContent>
@@ -6801,8 +6801,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "147"
             endingLineNumber = "147"
-            landmarkName = "EHomeMainVC"
-            landmarkType = "3">
+            landmarkName = "-requestArchive"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -6815,8 +6815,8 @@
             filePath = "&#x4e50;&#x9500;/Request/Api/RequestApi+EHomePay.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "+requestEHomeWuyeInfoWithareaId:delegate:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
@@ -6993,8 +6993,24 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "222"
             endingLineNumber = "222"
-            landmarkName = "EHomeMainVC"
-            landmarkType = "3">
+            landmarkName = "-requestWaitPayInfo"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "64E3A189-2439-4AED-B780-2E8A1B938011"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x4e50;&#x9500;/Scenes/EHomePay/EHomePayOrderVC.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
+            landmarkName = "-requestPay"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
