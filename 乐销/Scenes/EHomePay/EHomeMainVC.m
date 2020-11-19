@@ -152,20 +152,20 @@
             [self requestWuyeInfo];
             [self requestWaitPayInfo];
         }else{
-//            [GlobalData sharedInstance].modelEHomeArchive.ehomeAreaId = @"1319070981750390784";
-//            [self requestArchive];
-            [RequestApi requestEHomeBindHomeList:[GlobalData sharedInstance].GB_UserModel.phone delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-                NSArray * ary = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelEhomeHomeItem"];
-                for (ModelEhomeHomeItem *item in ary) {
-                    if ([item.roomId isEqualToString:[GlobalData sharedInstance].modelEHomeArchive.ehomeRoomId]) {
-                        [GlobalData sharedInstance].modelEHomeArchive.ehomeAreaId = item.areaId;
+            [RequestApi requestArchiveCode:NSNumber.dou([GlobalData sharedInstance].modelEHomeArchive.estateId).stringValue delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                [RequestApi requestEHomeAreaID:[response stringValueForKey:@"code"] delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                    [GlobalData sharedInstance].modelEHomeArchive.ehomeAreaId = [response stringValueForKey:@"areaId"];
+                    if (isStr([GlobalData sharedInstance].modelEHomeArchive.ehomeAreaId)) {
                         [self requestArchive];
-                        break;
                     }
-                }
+                    
+                } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                    
+                }];
             } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
-
+                
             }];
+            
         }
         
     }else{
@@ -230,7 +230,7 @@
             
         }];
     }else{
-       
+        
     }
     
     

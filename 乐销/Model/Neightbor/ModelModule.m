@@ -13,6 +13,7 @@
 //request
 #import "RequestApi+Neighbor.h"
 #import "RequestApi+FindJob.h"
+#import "RequestApi+EHomePay.h"
 
 #import "SubModuleView.h"
 #import "CustomTabBarController.h"
@@ -21,7 +22,7 @@
 #import "HailuoServiceListVC.h"
 #import "FindJobListVC.h"
 #import "FJResumeDetailVC.h"
-
+//request
 NSString *const kModelModuleIconUrl = @"iconUrl";
 NSString *const kModelModuleModuleName = @"moduleName";
 NSString *const kModelModuleUrl = @"url";
@@ -120,12 +121,20 @@ NSString *const kModelModuleID= @"id";
             [tabBar.viewControllers.firstObject.view addSubview:v];
             return;
         }
-        
+        if ([model.ios hasPrefix:@"EHomeMainVC"]) {
+            [RequestApi requestEHomeLoginWithPhone:@"" delegate:(BaseVC *)GB_Nav.lastVC success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                [GlobalData sharedInstance].modelEHome = [ModelHaiLuo modelObjectWithDictionary:response];
+                [GB_Nav pushVCName:@"EHomeMainVC" animated:true];
+            } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
+                
+            }];
+            return;
+        }
         if ([model.ios hasPrefix:@"HouseKeepingVC"]) {
-            #ifdef SLD_TEST
-                        [GB_Nav pushVCName:@"TestVC" animated:false];
-                        return;
-            #endif
+#ifdef SLD_TEST
+            [GB_Nav pushVCName:@"TestVC" animated:false];
+            return;
+#endif
             CustomTabBarController * tabBar = GB_Nav.viewControllers.firstObject;
             CommunityVC * communityVC = tabBar.viewControllers.firstObject;
             if ([communityVC isKindOfClass:CommunityVC.class]) {
@@ -133,6 +142,7 @@ NSString *const kModelModuleID= @"id";
                 return;
             }
         }
+        
         if ([model.ios hasPrefix:@"CallPolice"]) {
             //police
             if (isStr([GlobalData sharedInstance].community.policePhone)) {
@@ -191,7 +201,7 @@ NSString *const kModelModuleID= @"id";
             return;
         }
         if ([model.ios hasPrefix:@"JournalismListVC"]) {
-
+            
             NSArray * ary = [model.ios componentsSeparatedByString:@"&&"];
             NSString * strType = ary.count>1?ary[1]:@"";
             JournalismListVC * vc = [JournalismListVC new];

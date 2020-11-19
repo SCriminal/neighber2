@@ -1023,7 +1023,10 @@ success:(void (^)(NSDictionary * response, id mark))success
                       success:(void (^)(NSDictionary * response, id mark))success
                       failure:(void (^)(NSString * errorStr, id mark))failure;
 
-
++(void)requestArchiveCode:(NSString *)iden
+delegate:(id <RequestDelegate>)delegate
+success:(void (^)(NSDictionary * response, id mark))success
+                  failure:(void (^)(NSString * errorStr, id mark))failure;
 @end
 
 NS_ASSUME_NONNULL_END

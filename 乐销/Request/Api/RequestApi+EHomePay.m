@@ -190,8 +190,8 @@
                       delegate:(id <RequestDelegate>)delegate
                        success:(void (^)(NSDictionary * response, id mark))success
                        failure:(void (^)(NSString * errorStr, id mark))failure{
-    NSDictionary *dic = @{@"code":RequestStrKey(areaCode),
+    NSDictionary *dic = @{@"areaCode":RequestStrKey(areaCode),
     };
-    [self requestEHomeSwitchWithDic:dic trxCde:@"EM0025" apiUrl:@"/ehome/mobile/getAreaIdByAreaCode.do" delegate:delegate success:success failure:failure];
+    [self requestEHomeSwitchWithDic:dic trxCde:@"EM0036" apiUrl:@"/ehome/mobile/getAreaIdByAreaCode.do" delegate:delegate success:success failure:failure];
 }
 @end

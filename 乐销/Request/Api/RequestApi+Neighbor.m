@@ -1847,4 +1847,13 @@ failure:(void (^)(NSString * errorStr, id mark))failure{
         [self postUrl:@"/resident/login3/shandong/1_1_0" delegate:delegate parameters:dic success:success failure:failure];
 }
 
++(void)requestArchiveCode:(NSString *)iden
+                delegate:(id <RequestDelegate>)delegate
+                success:(void (^)(NSDictionary * response, id mark))success
+                failure:(void (^)(NSString * errorStr, id mark))failure{
+        NSDictionary *dic = @{@"id":RequestStrKey(iden),
+                           };
+        [self getUrl:@"/resident/area/1_3_7/idcode" delegate:delegate parameters:dic success:success failure:failure];
+}
+
 @end
