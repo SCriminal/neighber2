@@ -10,9 +10,7 @@
 @end
 
 @implementation TestVC
-/*
 
- */
 
 #pragma mark view did load
 - (void)viewDidLoad{
@@ -28,7 +26,13 @@
 #pragma mark nav right click
 - (void)jump{
 //    [[WXApiManager sharedManager]loginApp];
-    [GB_Nav pushVCName:@"EHomeMainVC" animated:true];
+    [ModelModule jumpWithModule: ^(){
+        ModelModule * m = [ModelModule new];
+        m.goMode = 3;
+        m.ios = @"EHomeMainVC";
+        return m;
+    }()];
+//    [GB_Nav pushVCName:@"EHomeMainVC" animated:true];
 //    [self payWithMode2:^(){
 //        EHomePayWeichatInfo * model = [EHomePayWeichatInfo new];
 //        model.payOrderNo = @"1323494611456495616";

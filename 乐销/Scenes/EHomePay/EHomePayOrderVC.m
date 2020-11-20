@@ -199,7 +199,7 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshHeaderAll) name:NOTICE_TROLLEY_EXCHANGE object:nil];
     self.tableView.height = SCREEN_HEIGHT - self.bottomView.height - NAVIGATIONBAR_HEIGHT;
     //table
-    //    self.tableView.backgroundColor = COLOR_GRAY;
+    //self.tableView.backgroundColor = COLOR_GRAY;
     //request
     [self requestList];
     [self reconfigView];
@@ -274,20 +274,18 @@
     };
     ISSPaySDK *paySDK = [ISSPaySDK payBankID:@"802" environmentMode:ISSBankSDKEnvironmentMode_ST scene:ISSBankSDKUseScenePay];
     [paySDK showPayAddedTo:self url:@"PYOrderDeal.do" channelID:@"B2" requestHeader:requestHeader requestData:requestData success:^{
-        NSLog(@"%s", __func__);
-        [GB_Nav popLastAndPushVC:[EHomePayHistoryListVC new]];
         [GlobalMethod showAlert:@"支付成功"];
+        [GB_Nav popLastAndPushVC:[EHomePayHistoryListVC new]];
+        NSLog(@"%s", __func__);
     } failure:^(NSString *message) {
         [GlobalMethod showAlert:@"支付失败"];
         NSLog(@"%s", __func__);
-        
+        NSLog(@"sld %@", message);
     } cancel:^(id result) {
         NSLog(@"%s", __func__);
-        [GlobalMethod showAlert:@"支付失败"];
-
+        [GlobalMethod showAlert:@"支付取消"];
+        NSLog(@"sld %@", result);
     }];
-    
-    
 }
 
 @end
