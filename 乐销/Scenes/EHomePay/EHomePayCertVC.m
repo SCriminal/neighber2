@@ -155,7 +155,7 @@
 #pragma mark request
 - (void)requestList{
     [self reconfigView];
-    [RequestApi requestEHomePayCert:@"13854851931" feesId:self.modelItem.feesId delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestEHomePayCert:[GlobalData sharedInstance].GB_UserModel.phone feesId:self.modelItem.feesId delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         self.modelDetail = [ModelEHomePayHistoryItem modelObjectWithDictionary:response];
         [self reconfigView];
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
