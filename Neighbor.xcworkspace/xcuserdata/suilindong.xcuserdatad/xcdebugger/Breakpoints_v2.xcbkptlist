@@ -3375,8 +3375,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Journalism/SafetyIndexDetailVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "-requestDetail"
             landmarkType = "7">
          </BreakpointContent>
@@ -3391,8 +3391,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Journalism/SafetyIndexDetailVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "-requestDetail"
             landmarkType = "7">
          </BreakpointContent>
@@ -6463,9 +6463,9 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Test/TestVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
-            landmarkName = "-payWithMode2:"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "-jump"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -6479,9 +6479,9 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Test/TestVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
-            landmarkName = "-payWithMode2:"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
+            landmarkName = "-jump"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -6495,9 +6495,9 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Test/TestVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
-            landmarkName = "-payWithModel:"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -6511,9 +6511,9 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Test/TestVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
-            landmarkName = "-payWithMode2:"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "-jump"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -6527,9 +6527,9 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Test/TestVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
-            landmarkName = "-payWithMode2:"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "-jump"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -6543,9 +6543,9 @@
             filePath = "&#x4e50;&#x9500;/Scenes/Test/TestVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
-            landmarkName = "-payWithModel:"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

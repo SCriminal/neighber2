@@ -61,6 +61,11 @@
 - (void)requestDetail{
     [RequestApi requestNewsListWithScopeid:[GlobalData sharedInstance].community.iDProperty page:1 count:50 categoryAlias:@"safety_index" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         NSMutableArray  * aryRequest = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelNews"];
+        for (ModelNews * item in aryRequest.copy) {
+                   if ([item.title containsString:@"疫情"]) {
+                       [aryRequest removeObject:item];
+                   }
+               }
         if (aryRequest.count > 0) {
             [self.noResultView removeFromSuperview];
             [self showLoadingView];

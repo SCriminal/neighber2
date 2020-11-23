@@ -116,6 +116,11 @@
     [RequestApi requestNewsListWithScopeid:[GlobalData sharedInstance].community.iDProperty page:self.pageNum count:50 categoryAlias:categoryAlias delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         self.pageNum ++;
         NSMutableArray  * aryRequest = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelNews"];
+        for (ModelNews * item in aryRequest.copy) {
+            if ([item.title containsString:@"疫情"]) {
+                [aryRequest removeObject:item];
+            }
+        }
         if (self.isRemoveAll) {
             [self.aryDatas removeAllObjects];
         }

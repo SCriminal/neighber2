@@ -243,6 +243,11 @@
     
     [RequestApi requestNewsListWithScopeid:[GlobalData sharedInstance].community.iDProperty page:self.pageNum count:50 categoryAlias:@"news" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         NSMutableArray  * aryRequest = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelNews"];
+        for (ModelNews * item in aryRequest.copy) {
+            if ([item.title containsString:@"疫情"]) {
+                [aryRequest removeObject:item];
+            }
+        }
         [self.aryDatas removeAllObjects];
         for (int i = 0; i<MIN(aryRequest.count, 6); i++) {
             [self.aryDatas addObject:aryRequest[i]];
@@ -264,7 +269,13 @@
 }
 - (void)requestNewsList{
     [RequestApi requestNewsListWithScopeid:[GlobalData sharedInstance].community.iDProperty page:1 count:50 categoryAlias:@"notice" delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
-        self.aryNews = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelNews"];
+        NSMutableArray  * aryRequest = [GlobalMethod exchangeDic:[response arrayValueForKey:@"list"] toAryWithModelName:@"ModelNews"];
+        for (ModelNews * item in aryRequest.copy) {
+            if ([item.title containsString:@"疫情"]) {
+                [aryRequest removeObject:item];
+            }
+        }
+        self.aryNews = aryRequest;
         [self.autoNewsView resetWithAry:[self.aryNews fetchValues:@"title"]];
         
         [self reconfigView];
