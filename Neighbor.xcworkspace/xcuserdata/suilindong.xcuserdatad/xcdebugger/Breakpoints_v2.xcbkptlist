@@ -6465,7 +6465,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "145"
             endingLineNumber = "145"
-            landmarkName = "-jump"
+            landmarkName = "-reqeustKey"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -6481,7 +6481,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "147"
             endingLineNumber = "147"
-            landmarkName = "-jump"
+            landmarkName = "-reqeustKey"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -6497,7 +6497,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "126"
             endingLineNumber = "126"
-            landmarkName = "-viewDidLoad"
+            landmarkName = "-payWithMode2:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -6513,7 +6513,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "136"
             endingLineNumber = "136"
-            landmarkName = "-jump"
+            landmarkName = "-payWithMode2:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -6529,7 +6529,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "133"
             endingLineNumber = "133"
-            landmarkName = "-jump"
+            landmarkName = "-payWithMode2:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -6545,7 +6545,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "129"
             endingLineNumber = "129"
-            landmarkName = "-viewDidLoad"
+            landmarkName = "-payWithMode2:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -7145,7 +7145,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "E2F9EF1B-4C33-4F83-9BB2-B3E256AE09B8"
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4e50;&#x9500;/Scenes/EHomePay/EHomePayOrderVC.m"
@@ -7161,7 +7161,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "42D381FE-4DE2-47A7-ADBE-F83258CCA1C5"
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4e50;&#x9500;/Scenes/EHomePay/EHomePayOrderVC.m"
@@ -7177,7 +7177,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "C47D4516-85AD-402B-AE74-481CF8465B77"
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4e50;&#x9500;/Scenes/EHomePay/EHomePayOrderVC.m"
@@ -7193,7 +7193,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "CB4524CE-7073-40CA-9FF7-3642F67172B5"
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4e50;&#x9500;/Scenes/EHomePay/EHomePayOrderVC.m"

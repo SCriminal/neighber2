@@ -263,7 +263,7 @@
     NSDictionary * requestData = @{
         @"orderNo": model.payOrderNo,
         @"orderAmt": NSNumber.dou(model.fee).stringValue,
-        @"oneMerchNo" : @"802200958120003",
+        @"oneMerchNo" : model.epishopId,
         @"notifyURL" : model.notifyUrl,
         @"currency" : @"CNY",
         @"transType" : @"AP04",
@@ -272,7 +272,7 @@
         @"orderTime" : [GlobalMethod exchangeDate:[NSDate date] formatter:@"yyyyMMddHHmmss"],
 
     };
-    ISSPaySDK *paySDK = [ISSPaySDK payBankID:@"802" environmentMode:ISSBankSDKEnvironmentMode_ST scene:ISSBankSDKUseScenePay];
+    ISSPaySDK *paySDK = [ISSPaySDK payBankID:@"802" environmentMode:ISSBankSDKEnvironmentMode_SIT scene:ISSBankSDKUseScenePay];
     [paySDK showPayAddedTo:self url:@"PYOrderDeal.do" channelID:@"B2" requestHeader:requestHeader requestData:requestData success:^{
         [GlobalMethod showAlert:@"支付成功"];
         [GB_Nav popLastAndPushVC:[EHomePayHistoryListVC new]];

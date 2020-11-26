@@ -93,7 +93,7 @@
         @"orderTitle" : @"海之宝鲜海带"
         
     };
-    ISSPaySDK *paySDK = [ISSPaySDK payBankID:@"802" environmentMode:ISSBankSDKEnvironmentMode_ST scene:ISSBankSDKUseScenePay];
+    ISSPaySDK *paySDK = [ISSPaySDK payBankID:@"802" environmentMode:ISSBankSDKEnvironmentMode_SIT scene:ISSBankSDKUseScenePay];
     [paySDK showPayAddedTo:self url:@"PYOrderDeal.do" channelID:@"B2" requestHeader:requestHeader requestData:requestData success:^{
         NSLog(@"%s", __func__);
     } failure:^(NSString *message) {
@@ -114,7 +114,7 @@
     NSDictionary * requestData = @{
         @"orderNo": model.payOrderNo,
         @"orderAmt": NSNumber.dou(model.fee).stringValue,
-        @"oneMerchNo" : @"802200958120003",
+        @"oneMerchNo" : model.epishopId,
         @"notifyURL" : model.notifyUrl,
         @"transType" : @"AP04",
         @"orderDesc" : model.orderDesc,
@@ -123,7 +123,7 @@
 
 //        @"epiKey":@"C9F983293AA603DC06832B3CB08BEA"
     };
-    ISSPaySDK *paySDK = [ISSPaySDK payBankID:@"802" environmentMode:ISSBankSDKEnvironmentMode_ST scene:ISSBankSDKUseScenePay];
+    ISSPaySDK *paySDK = [ISSPaySDK payBankID:@"802" environmentMode:ISSBankSDKEnvironmentMode_SIT scene:ISSBankSDKUseScenePay];
     [paySDK showPayAddedTo:self url:@"PYOrderDeal.do" channelID:@"B2" requestHeader:requestHeader requestData:requestData success:^{
 
         NSLog(@"%s", __func__);
