@@ -50,7 +50,7 @@
     
     CGFloat top = W(25);
     ModelArchiveList *modelArchive = [GlobalData sharedInstance].modelEHomeArchive;
-
+    
     NSArray * ary = @[^(){
         ModelBaseData * modelItem = [ModelBaseData new];
         modelItem.string = @"缴费项目";
@@ -65,7 +65,7 @@
         ModelBaseData * modelItem = [ModelBaseData new];
         modelItem.string = @"缴费房屋";
         modelItem.subString = [NSString stringWithFormat:@"%@%@号楼%@单元%@",UnPackStr(modelArchive.estateName),UnPackStr(modelArchive.buildingName),UnPackStr(modelArchive.unitName),UnPackStr(modelArchive.roomName)];
-
+        
         return modelItem;
     }()];
     for (int i = 0; i<ary.count; i++) {
@@ -118,7 +118,7 @@
         view.height = W(88);
         view.centerXTop = XY(SCREEN_WIDTH/2.0, top - W(15));
         [view addRoundCorner:UIRectCornerTopLeft|UIRectCornerTopRight|UIRectCornerBottomLeft| UIRectCornerBottomRight radius:10 lineWidth:1 lineColor:[UIColor colorWithHexString:@"#FBFBFB"]];
-         
+        
         [self.tableHeaderView addSubview:view];
         {
             UILabel * l = [UILabel new];
@@ -270,7 +270,7 @@
         @"orderDesc" : model.orderDesc,
         @"orderTitle" : model.orderTitle,
         @"orderTime" : [GlobalMethod exchangeDate:[NSDate date] formatter:@"yyyyMMddHHmmss"],
-
+        
     };
     ISSPaySDK *paySDK = [ISSPaySDK payBankID:@"802" environmentMode:ISSBankSDKEnvironmentMode_SIT scene:ISSBankSDKUseScenePay];
     [paySDK showPayAddedTo:self url:@"PYOrderDeal.do" channelID:@"B2" requestHeader:requestHeader requestData:requestData success:^{
@@ -285,6 +285,19 @@
         NSLog(@"%s", __func__);
         [GlobalMethod showAlert:@"支付取消"];
         NSLog(@"sld %@", result);
+        NSString * strJson = (NSString *)result;
+        if ([strJson isKindOfClass:[NSString class]]) {
+            NSDictionary * dic = [GlobalMethod exchangeStringToDic:strJson];
+            if ([dic isKindOfClass:[NSDictionary class]]) {
+                double state = [dic doubleValueForKey:@"orderState"];
+                if (state == 90) {
+                    [GlobalMethod showAlert:@"支付成功"];
+                    [GB_Nav popLastAndPushVC:[EHomePayHistoryListVC new]];
+                }else{
+                    [GlobalMethod showAlert:@"支付失败"];
+                }
+            }
+        }
     }];
 }
 
