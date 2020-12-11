@@ -44,6 +44,14 @@
 - (UIViewController *)lastVC{
     return self.viewControllers.lastObject;
 }
+- (UIViewController *)lastRequestDelegateVC{
+    if ([self.viewControllers.lastObject isKindOfClass:NSClassFromString(@"CustomTabBarController")]) {
+        UITabBarController * tabC = (UITabBarController *)self.viewControllers.lastObject;
+        BaseVC * vc = (BaseVC *)[tabC selectedViewController];
+        return vc;
+    }
+    return self.viewControllers.lastObject;
+}
 - (UIViewController *)lastSecondVC{
     NSArray * ary = GB_Nav.viewControllers;
     if (ary.count >= 2) {

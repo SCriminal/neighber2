@@ -122,7 +122,7 @@ NSString *const kModelModuleID= @"id";
             return;
         }
         if ([model.ios hasPrefix:@"EHomeMainVC"]) {
-            [RequestApi requestEHomeLoginWithPhone:@"" delegate:(BaseVC *)GB_Nav.lastVC success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+            [RequestApi requestEHomeLoginWithPhone:@"" delegate:(BaseVC *)GB_Nav.lastRequestDelegateVC success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
                 [GlobalData sharedInstance].modelEHome = [ModelHaiLuo modelObjectWithDictionary:response];
                 [GB_Nav pushVCName:@"EHomeMainVC" animated:true];
             } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
@@ -177,7 +177,7 @@ NSString *const kModelModuleID= @"id";
                 return;
             }
             [GlobalMethod judgeLoginState:^{
-                [RequestApi requestFJResumeInfoDelegate:(BaseVC *)GB_Nav.lastVC success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+                [RequestApi requestFJResumeInfoDelegate:(BaseVC *)GB_Nav.lastRequestDelegateVC success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
                     ModelResumeDetail *modelDetail = [ModelResumeDetail modelObjectWithDictionary:response];
                     if (modelDetail.iDProperty.doubleValue) {
                         [GB_Nav pushVCName:@"FJResumeDetailVC" animated:true];

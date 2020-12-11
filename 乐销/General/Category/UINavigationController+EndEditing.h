@@ -13,6 +13,7 @@
 
 #pragma mark property
 @property (nonatomic,readonly) UIViewController * lastVC;
+@property (nonatomic,readonly) UIViewController * lastRequestDelegateVC;
 @property (nonatomic,readonly) UIViewController * lastSecondVC;
 
 #pragma mark login method

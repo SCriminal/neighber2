@@ -11,7 +11,7 @@
 #import "RequestApi+EHomePay.h"
 #import <ISSBankSDK/ISSBankSDK.h>
 #import "EHomePayHistoryListVC.h"
-
+#import "UIDevice+YYAdd.h"
 @interface EHomePayOrderVC ()
 @property (nonatomic, strong) EHomeWaitPayBottomView *bottomView;
 @property (nonatomic, strong) UIView *tableHeaderView;
@@ -260,6 +260,9 @@
         @"rqId": @"Z6",
         @"ver": @"03",
     };
+    NSString * ipCell = [UIDevice currentDevice].ipAddressCell;
+    NSString * ipWifi = [UIDevice currentDevice].ipAddressWIFI;
+
     NSDictionary * requestData = @{
         @"orderNo": model.payOrderNo,
         @"orderAmt": NSNumber.dou(model.fee).stringValue,
@@ -269,14 +272,15 @@
         @"transType" : @"AP04",
         @"orderDesc" : model.orderDesc,
         @"orderTitle" : model.orderTitle,
+        @"ipAddress":isStr(ipWifi)?ipWifi:UnPackStr(ipCell),
         @"orderTime" : [GlobalMethod exchangeDate:[NSDate date] formatter:@"yyyyMMddHHmmss"],
         
     };
-    ISSPaySDK *paySDK = [ISSPaySDK payBankID:@"802" environmentMode:ISSBankSDKEnvironmentMode_SIT scene:ISSBankSDKUseScenePay];
+    ISSPaySDK *paySDK = [ISSPaySDK payBankID:@"802" environmentMode:ISSBankSDKEnvironmentMode_ST scene:ISSBankSDKUseScenePay];
     [paySDK showPayAddedTo:self url:@"PYOrderDeal.do" channelID:@"B2" requestHeader:requestHeader requestData:requestData success:^{
         [GlobalMethod showAlert:@"支付成功"];
         [GB_Nav popLastAndPushVC:[EHomePayHistoryListVC new]];
-        NSLog(@"%s", __func__);
+        NSLog(@"sld %s", __func__);
     } failure:^(NSString *message) {
         [GlobalMethod showAlert:@"支付失败"];
         NSLog(@"%s", __func__);
