@@ -196,7 +196,8 @@
     //添加导航栏
     [self addNav];
     [self.view addSubview:self.bottomView];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshHeaderAll) name:NOTICE_TROLLEY_EXCHANGE object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(wxPaySuccess) name:NOTICE_WECHAT_PAY_SUCCESS object:nil];
+
     self.tableView.height = SCREEN_HEIGHT - self.bottomView.height - NAVIGATIONBAR_HEIGHT;
     //table
     //self.tableView.backgroundColor = COLOR_GRAY;
@@ -304,5 +305,9 @@
         }
     }];
 }
+- (void)wxPaySuccess{
+    [GlobalMethod showAlert:@"支付成功"];
+    [GB_Nav popLastAndPushVC:[EHomePayHistoryListVC new]];
 
+}
 @end

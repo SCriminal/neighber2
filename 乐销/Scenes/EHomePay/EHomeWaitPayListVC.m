@@ -62,7 +62,6 @@
     //添加导航栏
     [self addNav];
     [self.view addSubview:self.bottomView];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshHeaderAll) name:NOTICE_TROLLEY_EXCHANGE object:nil];
     self.tableView.height = SCREEN_HEIGHT - self.bottomView.height - NAVIGATIONBAR_HEIGHT;
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, W(20), 0);
     //table
