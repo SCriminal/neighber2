@@ -7151,8 +7151,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/EHomePay/EHomePayOrderVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "288"
-            endingLineNumber = "288"
+            startingLineNumber = "290"
+            endingLineNumber = "290"
             landmarkName = "-payWithModel:"
             landmarkType = "7">
          </BreakpointContent>
@@ -7167,8 +7167,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/EHomePay/EHomePayOrderVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "292"
-            endingLineNumber = "292"
+            startingLineNumber = "294"
+            endingLineNumber = "294"
             landmarkName = "-payWithModel:"
             landmarkType = "7">
          </BreakpointContent>
@@ -7183,8 +7183,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/EHomePay/EHomePayOrderVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "284"
-            endingLineNumber = "284"
+            startingLineNumber = "286"
+            endingLineNumber = "286"
             landmarkName = "-payWithModel:"
             landmarkType = "7">
          </BreakpointContent>
@@ -7193,14 +7193,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "CB4524CE-7073-40CA-9FF7-3642F67172B5"
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4e50;&#x9500;/Scenes/EHomePay/EHomePayOrderVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "280"
-            endingLineNumber = "280"
+            startingLineNumber = "282"
+            endingLineNumber = "282"
             landmarkName = "-payWithModel:"
             landmarkType = "7">
          </BreakpointContent>

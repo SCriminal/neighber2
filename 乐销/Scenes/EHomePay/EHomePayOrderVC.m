@@ -277,7 +277,9 @@
         @"orderTime" : [GlobalMethod exchangeDate:[NSDate date] formatter:@"yyyyMMddHHmmss"],
         
     };
-    ISSPaySDK *paySDK = [ISSPaySDK payBankID:@"802" environmentMode:ISSBankSDKEnvironmentMode_ST scene:ISSBankSDKUseScenePay];
+    //运行的环境 (SDK内部会根据传入的环境类型选择对应的环境地址)
+   // 联调环境说明，其中包含IT开发环境，ST环境，SIT环境（准生产）以及UAT环境和PRD环境（生产环境）
+    ISSPaySDK *paySDK = [ISSPaySDK payBankID:@"802" environmentMode:ISSBankSDKEnvironmentMode_SIT scene:ISSBankSDKUseScenePay];
     [paySDK showPayAddedTo:self url:@"PYOrderDeal.do" channelID:@"B2" requestHeader:requestHeader requestData:requestData success:^{
         [GlobalMethod showAlert:@"支付成功"];
         [GB_Nav popLastAndPushVC:[EHomePayHistoryListVC new]];
