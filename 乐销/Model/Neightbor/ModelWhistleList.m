@@ -62,8 +62,14 @@ NSString *const kModelWhistleListIsPlatform = @"isPlatform";
         self.photo9Urls =  [dict arrayValueForKey:@"photo9Urls"];
         self.isAutoPush = [dict doubleValueForKey:@"isAutoPush"];
         self.isPlatform = [dict doubleValueForKey:kModelWhistleListIsPlatform];
-
-//1已发哨 3已吹哨 6已处理 9已处理 10已评价
+        if (self.score<=1 ) {
+            self.starShow = @"不满意";
+        }else if(self.score >=4){
+            self.starShow = @"满意";
+        }else{
+            self.starShow = @"基本满意";
+        }
+        //1已发哨 3已吹哨 6已处理 9已处理 10已评价
         switch ((int)self.status) {
             case 1:
             {

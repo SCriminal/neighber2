@@ -172,7 +172,17 @@
         [GlobalMethod showAlert:@"请选择满意程度"];
         return;
     }
-    [RequestApi requestCommentWhistleWithEvaluation:self.addCommentView.textView.text score:self.addCommentView.starView.indexSelected id:self.modelList.iDProperty scope:@"4" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    int score = 0;
+    if (self.addCommentView.starView.indexSelected == 0) {
+        score = 1;
+    }
+    if (self.addCommentView.starView.indexSelected == 1) {
+        score = 3;
+    }
+    if (self.addCommentView.starView.indexSelected == 2) {
+        score = 5;
+    }
+    [RequestApi requestCommentWhistleWithEvaluation:self.addCommentView.textView.text score:score id:self.modelList.iDProperty scope:@"4" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         self.requestState = 1;
         [self requestList];
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {

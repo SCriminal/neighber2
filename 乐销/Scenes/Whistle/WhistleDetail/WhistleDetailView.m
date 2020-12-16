@@ -557,8 +557,8 @@
     
     
     self.satisfaction.leftTop = XY(W(30),W(25));
+    [self.starView fitTitle:model.starShow variable:0];
     self.starView.leftCenterY = XY(self.satisfaction.right + W(30),self.satisfaction.centerY);
-//    [self.starView setCurrentScore:model.score];
     
     
     self.content.leftTop = XY(W(30),self.satisfaction.bottom+W(17));

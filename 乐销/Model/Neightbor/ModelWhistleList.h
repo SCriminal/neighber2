@@ -35,6 +35,7 @@
 @property (nonatomic, strong) UIColor *statusColorShow;
 @property (nonatomic, strong) NSMutableArray *aryImages;
 @property (nonatomic, strong) NSMutableArray *ary9UrlImages;
+@property (nonatomic, strong) NSString *starShow;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
