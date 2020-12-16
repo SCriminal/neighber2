@@ -100,14 +100,14 @@
     [Bugly startWithAppId:@"76cec8e771"];
     //(SDK内部会根据传入的环境类型选择对应的环境地址) 联调环境说明，其中包含IT开发环境，ST环境，SIT环境（准生产）以及UAT环境和PRD环境（生产环境）
 //#if DEBUG
-    [ISSPaySDK payBankID:@"802" environmentMode:ISSBankSDKEnvironmentMode_SIT scene:ISSBankSDKUseScenePay];
+    [ISSPaySDK payBankID:@"802" environmentMode:ISSBankSDKEnvironmentMode_ST scene:ISSBankSDKUseScenePay];
 //#else
 //    [ISSPaySDK payBankID:@"802" environmentMode:ISSBankSDKEnvironmentMode_ST scene:ISSBankSDKUseScenePay];
 //#endif
     [DHJSSDKManager registerApp];
 }
 
-#pragma mark 推送
+#pragma mark 推
 // 将得到的deviceToken传给SDK
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
