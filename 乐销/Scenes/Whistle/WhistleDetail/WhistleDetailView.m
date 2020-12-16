@@ -393,12 +393,9 @@
     }
     return _viewBG;
 }
-- (CommentStarView *)starView{
+- (CommentSelectView *)starView{
     if (!_starView) {
-        _starView = [CommentStarView new];
-        _starView.isShowGrayStarBg = true;
-        _starView.interval = W(12);
-        [_starView configDefaultView];
+        _starView = [CommentSelectView new];
         _starView.userInteractionEnabled = true;
     }
     return _starView;
@@ -464,7 +461,7 @@
     
     
     self.satisfaction.leftTop = XY(W(30),self.comment.bottom+W(17));
-    self.starView.leftCenterY = XY(self.satisfaction.right + W(30),self.satisfaction.centerY);
+    self.starView.leftCenterY = XY(self.satisfaction.right,self.satisfaction.centerY);
     
     
     self.content.leftTop = XY(W(30),self.satisfaction.bottom+W(33));
@@ -520,13 +517,14 @@
     }
     return _content;
 }
-- (CommentStarView *)starView{
+- (UILabel *)starView{
     if (!_starView) {
-        _starView = [CommentStarView new];
-        _starView.isShowGrayStarBg = true;
-        _starView.interval = W(12);
-        [_starView configDefaultView];
-        _starView.userInteractionEnabled = false;
+         _starView = [UILabel new];
+               _starView.textColor = COLOR_ORANGE;
+               _starView.font =  [UIFont systemFontOfSize:F(15) weight:UIFontWeightMedium];
+               _starView.numberOfLines = 1;
+               _starView.lineSpace = 0;
+               [_starView fitTitle:@"满意" variable:0];
     }
     return _starView;
 }
@@ -560,7 +558,7 @@
     
     self.satisfaction.leftTop = XY(W(30),W(25));
     self.starView.leftCenterY = XY(self.satisfaction.right + W(30),self.satisfaction.centerY);
-    [self.starView setCurrentScore:model.score];
+//    [self.starView setCurrentScore:model.score];
     
     
     self.content.leftTop = XY(W(30),self.satisfaction.bottom+W(17));

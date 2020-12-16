@@ -39,6 +39,7 @@
 		D20E4AA8243D71D8009915E2 /* AutoSelectCommunity.m in Sources */ = {isa = PBXBuildFile; fileRef = D20E4AA7243D71D8009915E2 /* AutoSelectCommunity.m */; };
 		D20E4ACA243DC91B009915E2 /* ModelActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = D20E4AC8243DC91A009915E2 /* ModelActivity.m */; };
 		D20E4ACD243EB91F009915E2 /* ModelModule.m in Sources */ = {isa = PBXBuildFile; fileRef = D20E4ACB243EB91E009915E2 /* ModelModule.m */; };
+		D20E860F25899D6200C9EE4C /* CommentSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20E860E25899D6200C9EE4C /* CommentSelectView.m */; };
 		D20FFB6B1E0D0A7700ACA896 /* DownListView.m in Sources */ = {isa = PBXBuildFile; fileRef = D20FFB6A1E0D0A7700ACA896 /* DownListView.m */; };
 		D20FFB6E1E0D18B900ACA896 /* DownListViewBG.m in Sources */ = {isa = PBXBuildFile; fileRef = D20FFB6D1E0D18B900ACA896 /* DownListViewBG.m */; };
 		D21014FA1EB81A010096C9CF /* MultiRadioBtnView.m in Sources */ = {isa = PBXBuildFile; fileRef = D21014F91EB81A010096C9CF /* MultiRadioBtnView.m */; };
@@ -676,6 +677,8 @@
 		D20E4AC9243DC91A009915E2 /* ModelActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelActivity.h; sourceTree = "<group>"; };
 		D20E4ACB243EB91E009915E2 /* ModelModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelModule.m; sourceTree = "<group>"; };
 		D20E4ACC243EB91F009915E2 /* ModelModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelModule.h; sourceTree = "<group>"; };
+		D20E860D25899D6200C9EE4C /* CommentSelectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommentSelectView.h; sourceTree = "<group>"; };
+		D20E860E25899D6200C9EE4C /* CommentSelectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentSelectView.m; sourceTree = "<group>"; };
 		D20FFB691E0D0A7700ACA896 /* DownListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownListView.h; sourceTree = "<group>"; };
 		D20FFB6A1E0D0A7700ACA896 /* DownListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownListView.m; sourceTree = "<group>"; };
 		D20FFB6C1E0D18B900ACA896 /* DownListViewBG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownListViewBG.h; sourceTree = "<group>"; };
@@ -4009,6 +4012,8 @@
 			children = (
 				D26B0ADD24220E0800977704 /* CommentStarView.h */,
 				D26B0ADE24220E0800977704 /* CommentStarView.m */,
+				D20E860D25899D6200C9EE4C /* CommentSelectView.h */,
+				D20E860E25899D6200C9EE4C /* CommentSelectView.m */,
 				D2D1E1D9242205E300ED5E0D /* WhistleDetailVC.h */,
 				D2D1E1DA242205E300ED5E0D /* WhistleDetailVC.m */,
 				D2D1E1DC2422065800ED5E0D /* WhistleDetailView.h */,
@@ -4738,6 +4743,7 @@
 				D2BE30D2210711FA0059929D /* ModelUser.m in Sources */,
 				D24250572415D4060055AC42 /* ShoppingView.m in Sources */,
 				D26B0AE224224A4100977704 /* ModelWhistleProgress.m in Sources */,
+				D20E860F25899D6200C9EE4C /* CommentSelectView.m in Sources */,
 				D2F7F3F2242B6D2C00F86747 /* SelectFloorView.m in Sources */,
 				D2257B2D24E7CA55001AF658 /* HailuoAuntResumeVC.m in Sources */,
 				D22BA9DF1E5EB8CA00C5B391 /* FSCalendarWeekdayView.m in Sources */,

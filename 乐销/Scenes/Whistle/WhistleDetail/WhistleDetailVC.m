@@ -168,11 +168,11 @@
         [GlobalMethod showAlert:@"请输入评论内容"];
         return;
     }
-    if (self.addCommentView.starView.currentScore == 0 ) {
+    if (self.addCommentView.starView.indexSelected < 0 ) {
         [GlobalMethod showAlert:@"请选择满意程度"];
         return;
     }
-    [RequestApi requestCommentWhistleWithEvaluation:self.addCommentView.textView.text score:self.addCommentView.starView.currentScore id:self.modelList.iDProperty scope:@"4" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestCommentWhistleWithEvaluation:self.addCommentView.textView.text score:self.addCommentView.starView.indexSelected id:self.modelList.iDProperty scope:@"4" delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         self.requestState = 1;
         [self requestList];
     } failure:^(NSString * _Nonnull errorStr, id  _Nonnull mark) {
