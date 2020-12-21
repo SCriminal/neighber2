@@ -5887,8 +5887,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/EHomePay/EHomeWaitPayListVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
@@ -5903,8 +5903,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/EHomePay/EHomeWaitPayListVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
             landmarkName = "-requestList"
             landmarkType = "7">
          </BreakpointContent>
@@ -5919,8 +5919,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/EHomePay/EHomeWaitPayListVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "-tableView:numberOfRowsInSection:"
             landmarkType = "7">
          </BreakpointContent>
@@ -6817,7 +6817,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "74"
             endingLineNumber = "74"
-            landmarkName = "+requestEHomeNoticeListWithroomId:areaId:page:pageSize:delegate:success:failure:"
+            landmarkName = "+requestEHomeWuyeInfoWithareaId:delegate:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -7137,7 +7137,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "40"
             endingLineNumber = "40"
-            landmarkName = "+requestEHomeSwitchWithDic:trxCde:apiUrl:delegate:success:failure:"
+            landmarkName = "+requestEHomeLoginWithPhone:delegate:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -7145,7 +7145,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "E2F9EF1B-4C33-4F83-9BB2-B3E256AE09B8"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4e50;&#x9500;/Scenes/EHomePay/EHomePayOrderVC.m"
@@ -7161,7 +7161,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "42D381FE-4DE2-47A7-ADBE-F83258CCA1C5"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4e50;&#x9500;/Scenes/EHomePay/EHomePayOrderVC.m"
@@ -7177,7 +7177,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "C47D4516-85AD-402B-AE74-481CF8465B77"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4e50;&#x9500;/Scenes/EHomePay/EHomePayOrderVC.m"
@@ -7193,7 +7193,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "CB4524CE-7073-40CA-9FF7-3642F67172B5"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "&#x4e50;&#x9500;/Scenes/EHomePay/EHomePayOrderVC.m"
@@ -7327,8 +7327,8 @@
             filePath = "&#x4e50;&#x9500;/Scenes/EHomePay/EHomeWaitPayListVC.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
             landmarkName = "-requestList"
             landmarkType = "7">
             <Locations>

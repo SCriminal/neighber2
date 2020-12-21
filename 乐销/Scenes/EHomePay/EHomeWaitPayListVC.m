@@ -68,9 +68,11 @@
     [self.tableView registerClass:[EHomeWaitPayCell class] forCellReuseIdentifier:@"EHomeWaitPayCell"];
     //    self.tableView.backgroundColor = COLOR_GRAY;
     //request
+}
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     [self requestList];
 }
-
 #pragma mark 添加导航栏
 - (void)addNav{
     [self.view addSubview:[BaseNavView initNavBackTitle:@"待付账单" rightTitle:@"历史查询" rightBlock:^{
@@ -103,7 +105,7 @@
 
 #pragma mark request
 - (void)requestList{
-    [RequestApi requestEHomeWaitPayListWithtelephone:[GlobalData sharedInstance].GB_UserModel.phone roomId:[GlobalData sharedInstance].modelEHomeArchive.ehomeRoomId delegate:nil success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
+    [RequestApi requestEHomeWaitPayListWithtelephone:[GlobalData sharedInstance].GB_UserModel.phone roomId:[GlobalData sharedInstance].modelEHomeArchive.ehomeRoomId delegate:self success:^(NSDictionary * _Nonnull response, id  _Nonnull mark) {
         //        ModelEhomeWaitPayInfo * model = [ModelEhomeWaitPayInfo modelObjectWithDictionary:response];
         self.aryDatas = [GlobalMethod exchangeDic:response toAryWithModelName:@"ModelEHomeWaitPayList"];
         [self.bottomView resetViewWithModel:self.aryDatas];

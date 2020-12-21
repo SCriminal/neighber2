@@ -43,6 +43,10 @@
         con.tag = i;
         
         left = l.right + W(12);
+        
+        if (i == 2) {
+            [self click:(UIControl *)con];
+        }
     }
     
 }
